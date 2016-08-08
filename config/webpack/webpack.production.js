@@ -3,12 +3,17 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const clientConfig = require('../environments/client/production')
 
 module.exports = require('./webpack.base')({
   // In production, we skip all hot-reloading stuff
   entry: [
     path.join(process.cwd(), 'app/entry.js'),
   ],
+
+  externals: {
+    Config: JSON.stringify(clientConfig)
+  },
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {

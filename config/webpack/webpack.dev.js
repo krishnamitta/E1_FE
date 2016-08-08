@@ -30,6 +30,8 @@ module.exports = require('./webpack.base')({
     chunkFilename: '[name].chunk.js',
   },
 
+  environmentConfig: path.join(__dirname, '../environments/client/development.js'),
+
   // Add development plugins
   plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
   preLoaders: 'eslint-loader',
