@@ -1,12 +1,11 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import NewPRComponent from '../components/new_pr_component'
-import { fetchVendorList, fetchCurrencies } from '../../reference_data/actions'
+import { fetchVendorList } from '../../reference_data/actions'
 
 class NewPRContainer extends Component {
   componentDidMount() {
       this.props.dispatch(fetchVendorList())
-      this.props.dispatch(fetchCurrencies())
   }
 
   render() {
