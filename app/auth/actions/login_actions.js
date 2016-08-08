@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { AUTH } from '../../config/constants'
+import { AUTH } from '../../../config/constants'
 
 export const logout = () => {
   return (dispatch) => {

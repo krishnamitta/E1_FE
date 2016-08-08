@@ -1,16 +1,7 @@
-import React, { Component } from 'react'
-import HeaderComponent from '../../components/layout/header_component'
-import { logout } from '../../actions/login_actions'
+import HeaderComponent from '../components/header_component'
+import { logout } from '../../auth/actions/login_actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
-class HeaderContainer extends Component {
-  render() {
-    return (
-      <HeaderComponent { ...this.props } />
-    )
-  }
-}
 
 const mapStateToProps = (state) => {
   return {
@@ -24,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent)

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import AppBar from 'material-ui/AppBar'
-import styles from '../styles'
+import styles from '../../styles'
 import ProfileMenu from './profile_menu'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'

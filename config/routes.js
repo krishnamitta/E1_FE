@@ -1,7 +1,9 @@
 import React from 'react'
 import store from '../app/store'
-import { Router, Route, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+
+import Layout from '../app/layout/components'
 import { DashboardComponent } from '../app/dashboard/components'
 
 // Create an enhanced history that syncs navigation events with the store
