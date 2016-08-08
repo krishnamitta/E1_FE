@@ -1,12 +1,14 @@
 import React from 'react'
-import Paper from 'material-ui/Paper'
+import Tile from '../../shared/components/tile'
+import { Link } from 'react-router'
 
 const DashboardComponent = () => {
   return (
-    <div className="col-6-6">
-      <Paper>
-        <h1>Dashboard</h1>
-      </Paper>
+    <div className="col-1-1">
+      <Link to="/">
+        <Tile />
+      </Link>
+
     </div>
 
   )
