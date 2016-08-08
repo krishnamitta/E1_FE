@@ -121,5 +121,18 @@ export default {
     maxWidth: '500px',
     margin: '50px auto',
     padding: '20px'
+  },
+  tile: {
+    height: '250px',
+    margin: '50px auto',
+    padding: '20px',
+    textAlign: 'center',
+    marginLeft: '13%',
+    color: 'white',
+    backgroundColor: '#4776E6'
+  },
+  addIcon: {
+    width: 96,
+    height: 96,
   }
 }

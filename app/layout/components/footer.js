@@ -1,6 +1,6 @@
 import React from 'react'
 import Paper from 'material-ui/Paper'
-import styles from '../styles.js'
+import styles from '../../styles.js'
 
 const Footer = () => (
   <Paper className="footer" zDepth={ 0 } style={ styles.footer }>
