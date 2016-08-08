@@ -1,0 +1,5 @@
+node_modules/
+sessions/
+public/index.html
+public/js/*.*
+npm-debug.log
