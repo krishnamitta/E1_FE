@@ -1,4 +1,5 @@
 const fontSize = 14
+const fontFamily = 'Roboto, sans-serif'
 const backgroundColor = 'rgb(7, 52, 116)'
 
 export default {
@@ -68,26 +69,14 @@ export default {
   formHeader: {
     textAlign: 'left',
     textTransform: 'capitalize',
-    fontFamily: 'Roboto, sans-serif',
-    fontSize: 16,
+    fontFamily,
+    fontSize: 17,
     color: '#706E6E',
-    marginTop: 20,
-    marginBottom: 10,
-    fontWeight: 500
-  },
-  sideHeader: {
-    textAlign: 'left',
-    textTransform: 'capitalize',
-    fontFamily: 'Roboto, sans-serif',
-    fontSize: 16,
-    color: '#706E6E',
-    paddingTop: 10,
-    paddingLeft: 12,
-    marginBottom: 5,
+    marginTop: 0,
+    marginBottom: 0,
     fontWeight: 500
   },
   innerHeader: {
-    fontSize: 18,
     margin: 0,
     position: 'relative',
     top: 12,
@@ -144,5 +133,21 @@ export default {
     position: 'absolute',
     top: 105,
     right: 5
+  },
+  no_items_message: {
+    wrapper: {
+      marginTop: 10,
+      border: '1px dotted #c1c1c1',
+      minHeight: '60%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    content: {
+      color: '#c1c1c1',
+      fontSize: 24,
+      fontFamily
+    }
   }
 }
