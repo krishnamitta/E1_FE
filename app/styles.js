@@ -12,6 +12,9 @@ export default {
   bodyWrapper: {
     padding: '10px 0'
   },
+  wrapper: {
+    paddingLeft: 24
+  },
   inputField: {
     textAlign: 'left'
   },
@@ -123,16 +126,23 @@ export default {
     padding: '20px'
   },
   tile: {
-    height: '250px',
-    margin: '50px auto',
-    padding: '20px',
-    textAlign: 'center',
-    marginLeft: '13%',
-    color: 'white',
-    backgroundColor: '#4776E6'
+    wrapper: {
+      height: '200px',
+      textAlign: 'center',
+      color: 'white',
+      backgroundColor: '#4776E6'
+    },
+    header: {
+      textTransform: 'uppercase',
+      fontSize: 16,
+      padding: '10px 0'
+    }
   },
   addIcon: {
-    width: 96,
-    height: 96,
+    width: 36,
+    height: 36,
+    position: 'absolute',
+    top: 105,
+    right: 5
   }
 }

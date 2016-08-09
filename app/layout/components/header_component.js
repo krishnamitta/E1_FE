@@ -14,7 +14,7 @@ export default class HeaderComponent extends Component {
   render() {
     const user = this.props.user
     return (
-      <header className="header">
+      <header>
         <AppBar style={ styles.appbar } showMenuIconButton={ false } titleStyle={ { flex: 'none' } }>
           <div className="col-2-12">
             <Link title="Copart" to="/">

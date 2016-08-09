@@ -13,6 +13,10 @@ html, body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   min-height: 92%;
   /* equal to footer height */

@@ -5,10 +5,16 @@ import { Link } from 'react-router'
 const DashboardComponent = () => {
   return (
     <div className="col-1-1">
-      <Link to="/purchase_requisitions/new">
-        <Tile />
-      </Link>
-
+      <div className="col-1-5">
+        <Link to="/purchase_requisitions/new">
+          <Tile label="Purchase Requisition" />
+        </Link>
+      </div>
+      <div className="col-1-5">
+        <Link to="/purchase_requisitions/new">
+          <Tile label="Purchase Order" />
+        </Link>
+      </div>
     </div>
 
   )

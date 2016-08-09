@@ -4,8 +4,10 @@ import styles from '../../styles.js'
 export default class Body extends Component {
   render() {
     return (
-      <section className="wrapper" style={ styles.wrapper }>
-        { this.props.data }
+      <section className="wrapper">
+        <div style={ styles.wrapper }>
+          { this.props.data }
+        </div>
       </section>
     )
   }
