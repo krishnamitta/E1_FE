@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
 import styles from '../styles'
-import ActionNoteAdd from 'material-ui/svg-icons/action/note-add'
 
 
 const Tile = (props) => {
@@ -9,14 +8,15 @@ const Tile = (props) => {
     <Paper style={ styles.tile.wrapper }>
       <h1 style={ styles.tile.header }>{ props.label }</h1>
       <div style={ { position: 'relative' } }>
-        <ActionNoteAdd color="#FFFFFF" style={ styles.addIcon } />
+        { props.icon }
       </div>
     </Paper>
   )
 }
 
 Tile.propTypes = {
-  label: PropTypes.string
+  label: PropTypes.string,
+  icon: PropTypes.object
 }
 
 export default Tile
