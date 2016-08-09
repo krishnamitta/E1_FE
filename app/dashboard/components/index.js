@@ -1,5 +1,5 @@
 import React from 'react'
-import Tile from '../../shared/components/tile'
+import Tile from '../../common/tile'
 import { Link } from 'react-router'
 
 const DashboardComponent = () => {

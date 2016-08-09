@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
-import styles from '../../styles'
+import styles from '../styles'
 import ActionNoteAdd from 'material-ui/svg-icons/action/note-add'
 
 
