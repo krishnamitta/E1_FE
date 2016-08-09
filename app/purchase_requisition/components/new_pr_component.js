@@ -5,8 +5,11 @@ import newPR from '../../common/form_fields/new_pr'
 const NewPRComponent = (props) => {
   return (
     <div className="col-1-1">
-      <div className="col-1-3"><InputField attrs={ newPR.title } data={ props.data.title } /></div>
+      <div className="col-1-1"><InputField attrs={ newPR.title } data={ props.data.title } /></div>
       <div className="col-1-5"><InputField attrs={ newPR.vendor } data={ props.data.currency } /></div>
+      <div className="col-1-5"><InputField attrs={ newPR.business_unit } data={ props.data.business_unit } /></div>
+      <div className="col-1-5"><InputField attrs={ newPR.plant } data={ props.data.plant } /></div>
+      <div className="col-1-5"><InputField attrs={ newPR.currency } data={ props.data.currency } /></div>
     </div>
   )
 }
