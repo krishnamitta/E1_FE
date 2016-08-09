@@ -2,8 +2,8 @@ import React from 'react'
 import InputField from '../../common/input_field'
 import newPR from '../../common/form_fields/new_pr'
 import styles from '../../styles'
-import IconButton from 'material-ui/IconButton'
-import ContentAddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 
 const NoItemsMessage = () => {
   return (
@@ -11,9 +11,9 @@ const NoItemsMessage = () => {
       <div style={ styles.no_items_message.content }>
         <h1>No Items available, click add</h1>
         <div style={ { textAlign: 'center' } }>
-          <IconButton primary={ true } style={ { width: 40, height: 40 } }>
-            <ContentAddCircleOutline style={ { width: 40, height: 40, color: '#c1c1c1' } } />
-          </IconButton>
+          <FloatingActionButton>
+            <ContentAdd />
+          </FloatingActionButton>
         </div>
       </div>
     </div>
