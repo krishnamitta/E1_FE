@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import InputField from '../../common/input_field'
 import newPR from '../../common/form_fields/new_pr'
 import styles from '../../styles'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import { addLineItem } from '../actions'
 
-const NoItemsMessage = () => {
+const NoItemsMessage = (props) => {
   return (
     <div style={ styles.no_items_message.wrapper }>
       <div style={ styles.no_items_message.content }>
-        <h1>No Items available, click add</h1>
+        <h1>No Line Items Available!</h1>
         <div style={ { textAlign: 'center' } }>
-          <FloatingActionButton>
+          <FloatingActionButton onTouchTap={ (event) => { props.dispatch(addLineItem()) } }>
             <ContentAdd />
           </FloatingActionButton>
         </div>
@@ -36,15 +37,19 @@ const NewPRComponent = (props) => {
         <div className="col-11-12" style={ { padding: '5px 0' } } />
       </div>
       <section className="col-1-1">
-        { props.items ? '' : <NoItemsMessage /> }
+        { props.data.line_items.length ? '' : <NoItemsMessage { ...props } /> }
       </section>
     </div>
   )
 }
 
+NoItemsMessage.propTypes = {
+  dispatch: PropTypes.func
+}
+
 NewPRComponent.propTypes = {
-  data: React.PropTypes.object,
-  items: React.PropTypes.array
+  data: PropTypes.object,
+  line_items: PropTypes.array
 }
 
 export default NewPRComponent

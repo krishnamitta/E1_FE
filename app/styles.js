@@ -71,7 +71,7 @@ export default {
     textTransform: 'capitalize',
     fontFamily,
     fontSize: 17,
-    color: '#706E6E',
+    color: 'rgb(112, 110, 110)',
     marginTop: 0,
     marginBottom: 0,
     fontWeight: 500

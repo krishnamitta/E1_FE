@@ -21,7 +21,7 @@ NewPRContainer.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    data: {},
+    data: state.PurchaseRequisition,
     references: state.References
   }
 }
