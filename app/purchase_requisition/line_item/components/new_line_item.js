@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import InputField from '../../../common/input_field'
 import newLineItem from '../../../common/form_fields/new_line_item'
 import Paper from 'material-ui/Paper'
@@ -18,8 +18,7 @@ const LineItemComponent = (props) => {
 }
 
 LineItemComponent.propTypes = {
-  data: React.PropTypes.object,
-  items: React.PropTypes.array
+  data: PropTypes.object
 }
 
 export default LineItemComponent
