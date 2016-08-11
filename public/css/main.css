@@ -34,3 +34,7 @@ a {
 	overflow: hidden;
   margin-top: 20px;
 }
+.line_item_form h3 {
+  padding: 0;
+  margin: 0;
+}

@@ -1,8 +1,8 @@
 import React from 'react'
 import StringField from './string_field'
-import Dropdown from './dropdown'
 import IntegerField from './integer_field'
 import EmailField from './email_field'
+import Dropdown from './select_field'
 
 const FieldMapper = {
   string: StringField,

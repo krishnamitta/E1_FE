@@ -2,27 +2,22 @@ import React, { Component, PropTypes } from 'react'
 import InputField from '../../common/input_field'
 import newPR from '../../common/form_fields/new_pr'
 import styles from '../../styles'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import { addLineItem } from '../actions'
-import LineItem from '../line_item/components/new_line_item'
-
-const NoItemsMessage = (props) => {
-  return (
-    <div style={ styles.no_items_message.wrapper }>
-      <div style={ styles.no_items_message.content }>
-        <h1>No Line Items Available!</h1>
-        <div style={ { textAlign: 'center' } }>
-          <FloatingActionButton onTouchTap={ (event) => { props.dispatch(addLineItem()) } }>
-            <ContentAdd />
-          </FloatingActionButton>
-        </div>
-      </div>
-    </div>
-  )
-}
+import AddLineItem from './add_line_item'
 
 export default class NewPRComponent extends Component {
+
+  noLineItems() {
+    return (
+      <div style={ styles.no_items_message.wrapper }>
+        <div style={ styles.no_items_message.content }>
+          <h1>No Line Items Available!</h1>
+          <div style={ { textAlign: 'center' } }>
+            <AddLineItem />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   renderLineItem(lineItem) {
     return React.createElement(LineItem, { data: lineItem })
@@ -45,15 +40,11 @@ export default class NewPRComponent extends Component {
           <div className="col-11-12" style={ { padding: '5px 0' } } />
         </div>
         <section className="col-1-1">
-          { data.line_items.length ? data.line_items.map((lineItem, i) => this.renderLineItem(lineItem)) : <NoItemsMessage { ...this.props } /> }
+          { data.line_items.length ? data.line_items.map((lineItem, i) => this.renderLineItem(lineItem)) : this.noLineItems() }
         </section>
       </div>
     )
   }
-}
-
-NoItemsMessage.propTypes = {
-  dispatch: PropTypes.func
 }
 
 NewPRComponent.propTypes = {

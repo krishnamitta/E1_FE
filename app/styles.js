@@ -134,6 +134,11 @@ export default {
     top: 105,
     right: 5
   },
+  line_item: {
+    innerHeader: {
+      marginTop: 10
+    }
+  },
   no_items_message: {
     wrapper: {
       marginTop: 20,
