@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
+import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import styles from '../../styles'
@@ -35,9 +34,7 @@ export default class addLineItem extends Component {
 
     return (
       <div>
-        <FloatingActionButton onTouchTap={ (event) => this.openDialog() }>
-          <ContentAdd />
-        </FloatingActionButton>
+        <RaisedButton label="Add line item" primary={ true } onTouchTap={ (event) => this.openDialog() } />
         <Dialog
           title="Add Line Item"
           style={ Object.assign({}, styles.formHeader, styles.font20) }

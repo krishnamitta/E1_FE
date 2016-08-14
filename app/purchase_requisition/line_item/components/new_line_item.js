@@ -34,7 +34,6 @@ const LineItemComponent = (props) => {
           <h3 style={ styles.line_item.innerHeader }>Accounting</h3>
           <div className="col-1-4"><InputField attrs={ newLineItem.accounting.distribution } /></div>
           <div className="col-1-4"><InputField attrs={ newLineItem.accounting.assignment_category } /></div>
-          <div className="col-1-4"><InputField attrs={ newLineItem.accounting.ledger_account } /></div>
         </section>
         <div className="col-1-1"><InputField attrs={ newLineItem.notes } data={ data.notes } /></div>
       </Paper>

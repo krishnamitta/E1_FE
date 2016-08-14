@@ -3,11 +3,13 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 
 export default class LineItemList extends Component {
+
   renderGridHeaderColumn(header, index) {
     return (
       <TableHeaderColumn style={ { fontWeight: 600, fontSize: 13 } } key={ index }><span>{ header }</span></TableHeaderColumn>
     )
   }
+
   renderGridBody(row, index) {
     return (
       <TableRow>
@@ -15,6 +17,7 @@ export default class LineItemList extends Component {
       </TableRow>
     )
   }
+
   renderRowColumn(data, index) {
     return (
       <TableRowColumn key={ index }>
@@ -22,6 +25,7 @@ export default class LineItemList extends Component {
       </TableRowColumn>
     )
   }
+
   render() {
     return (
       <div>
