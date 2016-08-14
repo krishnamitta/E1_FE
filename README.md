@@ -1,7 +1,7 @@
-# g-p2p-webapp
+# Procure to pay
 Web Client to manage Purchase Requisition and Expenses
 
-### Getting started with g-p2p-webapp
+### Getting started with P2P
 
 1. Clone the project and install packages
 
