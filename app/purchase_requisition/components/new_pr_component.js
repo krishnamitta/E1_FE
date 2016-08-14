@@ -3,6 +3,7 @@ import InputField from '../../common/input_field'
 import newPR from '../../common/form_fields/new_pr'
 import styles from '../../styles'
 import AddLineItem from './add_line_item'
+import LineItemList from '../line_item/components/line_item_list'
 
 export default class NewPRComponent extends Component {
 
@@ -20,7 +21,9 @@ export default class NewPRComponent extends Component {
   }
 
   renderLineItem(lineItem) {
-    return React.createElement(LineItem, { data: lineItem })
+    return (
+      <LineItemList { ...lineItem } />
+    )
   }
 
   render() {
