@@ -1,28 +1,21 @@
 import React, { Component, PropTypes } from 'react'
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 
-
+const headerStyle = {
+  fontWeight: 600, fontSize: 13
+}
 export default class LineItemList extends Component {
 
-  renderGridHeaderColumn(header, index) {
-    return (
-      <TableHeaderColumn style={ { fontWeight: 600, fontSize: 13 } } key={ index }><span>{ header }</span></TableHeaderColumn>
-    )
-  }
-
-  renderGridBody(row, index) {
+  renderGridBody(lineItem, index) {
     return (
       <TableRow>
-      { Object.keys(row).map((property, i) => this.renderRowColumn(row[property], property, i)) }
+        <TableRowColumn key={ index }>{ lineItem.plant }</TableRowColumn>
+        <TableRowColumn key={ index }>{ lineItem.business_unit }</TableRowColumn>
+        <TableRowColumn key={ index }>{ lineItem.material }</TableRowColumn>
+        <TableRowColumn key={ index }>{ lineItem.quantity }</TableRowColumn>
+        <TableRowColumn key={ index }>{ lineItem.price }</TableRowColumn>
+        <TableRowColumn key={ index }>{ lineItem.expected_deliver_date }</TableRowColumn>
       </TableRow>
-    )
-  }
-
-  renderRowColumn(data, index) {
-    return (
-      <TableRowColumn key={ index }>
-        { data }
-      </TableRowColumn>
     )
   }
 
@@ -33,11 +26,16 @@ export default class LineItemList extends Component {
           <Table selectable={ true }>
             <TableHeader displaySelectAll={ false } adjustForCheckbox={ true }>
               <TableRow>
-                { this.props.grid_headers ? this.props.grid_headers.map((header, index) => this.renderGridHeaderColumn(header, index)) : '' }
+                <TableHeaderColumn style={ headerStyle }><span>Plant</span></TableHeaderColumn>
+                <TableHeaderColumn style={ headerStyle }><span>Business Unit</span></TableHeaderColumn>
+                <TableHeaderColumn style={ headerStyle }><span>Material</span></TableHeaderColumn>
+                <TableHeaderColumn style={ headerStyle }><span>Quantity</span></TableHeaderColumn>
+                <TableHeaderColumn style={ headerStyle }><span>Price</span></TableHeaderColumn>
+                <TableHeaderColumn style={ headerStyle }><span>Expected Delivery Date</span></TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody showRowHover={ true } displayRowCheckbox={ true }>
-              { this.props.grid_body ? this.props.grid_body.map((row, index) => this.renderGridBody(row, index)) : '' }
+              { this.props.line_items.length ? this.props.line_items.map((lineItem, index) => this.renderGridBody(lineItem, index)) : '' }
             </TableBody>
           </Table>
         </div>
@@ -47,6 +45,5 @@ export default class LineItemList extends Component {
 }
 
 LineItemList.propTypes = {
-  grid_headers: PropTypes.array,
-  grid_body: PropTypes.array
+  line_items: PropTypes.array
 }
