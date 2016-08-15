@@ -1,7 +1,7 @@
 export default {
   title: {
     name: 'title',
-    floatingLabel: 'Title',
+    floatingLabel: 'Header Note',
     type: 'string',
     required: true
   }

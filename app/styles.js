@@ -50,7 +50,7 @@ export default {
     fontSize: 14
   },
   floatingLabel: {
-    color: backgroundColor,
+    color: 'rgb(112, 110, 110)',
     top: '35px',
     width: '180%',
     fontSize
@@ -97,7 +97,9 @@ export default {
   },
   dialogTitleStyle: {
     fontSize: 20,
-    padding: 10
+    padding: 10,
+    color: 'rgb(112, 110, 110)',
+    backgroundColor: '#F2F2F2'
   },
   loginfield: {
     width: '100%'

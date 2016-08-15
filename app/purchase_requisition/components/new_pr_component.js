@@ -20,12 +20,6 @@ export default class NewPRComponent extends Component {
     )
   }
 
-  renderLineItem(lineItem) {
-    return (
-      <LineItemList { ...lineItem } />
-    )
-  }
-
   itemCount() {
     return this.props.data.line_items.length
   }
@@ -42,7 +36,6 @@ export default class NewPRComponent extends Component {
       <div className="col-1-1">
         <h2 className="col-1-1" style={ styles.formHeader }>New Purchase Requisition</h2>
         <div className="col-1-1"><InputField attrs={ newPR.title } data={ data.title } /></div>
-
         <div className="col-1-1" style={ Object.assign({}, { marginTop: 20 }, styles.headerBackground) }>
           <div className="col-1-12" style={ styles.header }>
             <h3 style={ Object.assign({}, styles.formHeader, styles.innerHeader) }>Items - { this.itemCount() }</h3>
@@ -55,7 +48,7 @@ export default class NewPRComponent extends Component {
         </div>
 
         <section className="col-1-1">
-          { data.line_items.length ? data.line_items.map((lineItem, i) => this.renderLineItem(lineItem)) : this.noLineItems() }
+          { data.line_items.length ? <LineItemList line_items={ this.props.data.line_items } /> : this.noLineItems() }
         </section>
       </div>
     )
@@ -64,5 +57,4 @@ export default class NewPRComponent extends Component {
 
 NewPRComponent.propTypes = {
   data: PropTypes.object,
-  line_items: PropTypes.array
 }

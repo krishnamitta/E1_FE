@@ -1,7 +1,7 @@
 export default {
-  title: {
-    name: 'title',
-    floatingLabel: 'Title',
+  description: {
+    name: 'description',
+    floatingLabel: 'Item Description',
     type: 'string',
     required: true
   },
@@ -19,6 +19,11 @@ export default {
     dataSource: [{ code: '5001', description: 'Dallas' }, { code: '5002', description: 'Miami' }],
     required: true
   },
+  part_number: {
+    name: 'manufacturer_part_number',
+    floatingLabel: 'Manufacturer Part Number',
+    type: 'string'
+  },
   purchasing_organization: {
     name: 'purchasing_organization',
     floatingLabel: 'Pruchasing Organization',
@@ -32,7 +37,7 @@ export default {
   },
   total_price: {
     name: 'total_price',
-    floatingLabel: 'Total Price',
+    floatingLabel: 'Total Value',
     type: 'string',
     required: true,
     disabled: true
@@ -78,24 +83,20 @@ export default {
     },
     material_number: {
       name: 'vendor_material_number',
-      floatingLabel: 'Material Number',
+      floatingLabel: 'Vendor Material Number',
       type: 'string'
     },
     address: {
       name: 'vendor_address',
       floatingLabel: 'Vendor Address',
-      type: 'string'
+      type: 'string',
+      disabled: true
     }
   },
   material: {
     name: {
       name: 'material_name',
       floatingLabel: 'Item/Service',
-      type: 'string'
-    },
-    description: {
-      name: 'material_description',
-      floatingLabel: 'Item Description',
       type: 'string'
     },
     group: {
@@ -107,12 +108,12 @@ export default {
   accounting: {
     distribution: {
       name: 'account_distribution',
-      floatingLabel: 'Distribution',
+      floatingLabel: 'Account Distribution',
       type: 'string'
     },
     assignment_category: {
       name: 'assignment_category',
-      floatingLabel: 'Assignment Category',
+      floatingLabel: 'Account Assignment Category',
       type: 'string'
     },
     ledger_account: {
