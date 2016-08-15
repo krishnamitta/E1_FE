@@ -32,7 +32,7 @@ export default {
   price: {
     name: 'price',
     floatingLabel: 'Price',
-    type: 'string',
+    type: 'number',
     required: true
   },
   total_price: {
@@ -52,7 +52,7 @@ export default {
   quantity: {
     name: 'quantity',
     floatingLabel: 'Quantity',
-    type: 'string',
+    type: 'number',
     required: true
   },
   notes: {
@@ -109,12 +109,15 @@ export default {
     distribution: {
       name: 'account_distribution',
       floatingLabel: 'Account Distribution',
-      type: 'string'
+      type: 'dropdown',
+      dataSource: [{ code: 'percentage', description: 'Percentage' }, { code: 'quantity', description: 'Quantity' }]
     },
     assignment_category: {
       name: 'assignment_category',
       floatingLabel: 'Account Assignment Category',
-      type: 'string'
+      type: 'dropdown',
+      dataSource: [{ code: 'with_goods_receipt', description: 'With Goods Receipt' },
+      { code: 'without_goods_receipt', description: 'Without Goods Receipt' }]
     },
     ledger_account: {
       name: 'ledger_account',

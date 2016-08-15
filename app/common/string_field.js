@@ -35,8 +35,7 @@ export default class StringField extends Component {
         type={ this.props.field_type || 'text' }
         floatingLabelStyle={ Style.floatingLabel }
         underlineFocusStyle={ Style.underlineFocus }
-        multiLine={ this.props.multiLine }
-      />
+        multiLine={ this.props.multiLine } />
     )
   }
 }

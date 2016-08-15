@@ -1,13 +1,13 @@
 import React from 'react'
 import StringField from './string_field'
-import IntegerField from './integer_field'
+import DecimalField from './decimal_field'
 import EmailField from './email_field'
 import Dropdown from './select_field'
 
 const FieldMapper = {
   string: StringField,
   dropdown: Dropdown,
-  integer: IntegerField,
+  number: DecimalField,
   email: EmailField
 }
 

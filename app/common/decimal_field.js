@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react'
 import TextField from 'material-ui/TextField'
 import Style from '../styles'
 
-export default class IntegerField extends Component {
+export default class DecimalField extends Component {
   constructor(props) {
     super(props)
-    this.state = { errorText: '', value: this.formatValue(this.props.data) || '' }
+    this.state = { errorText: '', value: this.formatValue(this.props.data) || 0 }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,17 +24,15 @@ export default class IntegerField extends Component {
     if (valid) {
       this.setState({ errorText: '', value: e.target.value })
     } else {
-      this.setState({ errorText: 'Invalid input. This is a number field' })
+      this.setState({ errorText: 'Invalid value', value: e.target.value })
     }
   }
   render() {
     return (
       <TextField
-        hintText={ this.props.label }
         style={ Style.root }
-        id={ this.props.id }
         disabled={ this.props.disabled }
-        floatingLabelText={ this.props.label }
+        floatingLabelText={ this.props.floatingLabel }
         floatingLabelStyle={ Style.floatingLabel }
         name={ this.props.name }
         value={ this.state.value }
@@ -48,18 +46,17 @@ export default class IntegerField extends Component {
   }
 }
 
-IntegerField.propTypes = {
+DecimalField.propTypes = {
   name: PropTypes.string,
   className: PropTypes.string,
   data: PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
   style: PropTypes.object,
   underlineShow: PropTypes.bool,
-  id: PropTypes.string,
-  label: PropTypes.string,
+  floatingLabel: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool
 }
 
-IntegerField.defaultProps = {
+DecimalField.defaultProps = {
   underlineShow: true
 }
