@@ -3,7 +3,9 @@ import { REFERENCEDATA } from '../../../config/constants'
 const Referencedata = (state = {}, action) => {
   switch (action.type) {
     case REFERENCEDATA.LOAD_VENDORS:
-      return {}
+      return Object.assign({}, state, { vendors: action.data })
+    case REFERENCEDATA.LOAD_COUNTRIES:
+      return Object.assign({}, state, { countries: action.data })
     default:
       return state
   }

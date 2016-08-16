@@ -45,7 +45,7 @@ export default class addLineItem extends Component {
           onRequestClose={ this.handleClose }
           modal={ false }
           actions={ actions }>
-          <LineItem />
+          <LineItem { ...this.props } />
         </Dialog>
       </div>
     )

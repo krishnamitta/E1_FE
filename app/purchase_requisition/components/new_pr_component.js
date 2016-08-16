@@ -13,7 +13,7 @@ export default class NewPRComponent extends Component {
         <div style={ styles.no_items_message.content }>
           <h1>No Line Items Available!</h1>
           <div style={ { textAlign: 'center' } }>
-            <AddLineItem />
+            { this.renderLineItemDialog() }
           </div>
         </div>
       </div>
@@ -24,9 +24,13 @@ export default class NewPRComponent extends Component {
     return this.props.data.line_items.length
   }
 
+  renderLineItemDialog() {
+    return <AddLineItem { ...this.props } />
+  }
+
   renderAddLineItemBtn() {
     return (
-      this.itemCount() > 0 ? <AddLineItem /> : ''
+      this.itemCount() > 0 ? this.renderLineItemDialog() : ''
     )
   }
 
