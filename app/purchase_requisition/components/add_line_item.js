@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import styles from '../../styles'
-import LineItem from '../line_item/components/new_line_item'
+import LineItemContainer from '../line_item/containers/new_line_item'
 
 const customContentStyle = {
   width: '80%',
@@ -45,7 +45,7 @@ export default class addLineItem extends Component {
           onRequestClose={ this.handleClose }
           modal={ false }
           actions={ actions }>
-          <LineItem { ...this.props } />
+          <LineItemContainer />
         </Dialog>
       </div>
     )

@@ -25,7 +25,7 @@ export default class NewPRComponent extends Component {
   }
 
   renderLineItemDialog() {
-    return <AddLineItem { ...this.props } />
+    return <AddLineItem />
   }
 
   renderAddLineItemBtn() {

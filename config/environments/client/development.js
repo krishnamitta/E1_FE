@@ -4,7 +4,8 @@ module.exports = {
     references: {
       getVendorList: "/VendorMaster?Ktokk='ZPUL'&sap-client=300",
       getCountries: "/CountryMaster?locale='E'&sap-client=300",
-      getUOMList: "/UomMaster?$format=json&locale='E'"
+      getUOMList: "/UomMaster?$format=json&locale='E'",
+      getPlantList: '/PlantMaster?sap-client=300&$format=json'
     }
   }
 }

@@ -1,18 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import InputField from '../../../common/input_field'
 import newLineItem from '../../../common/form_fields/new_line_item'
-import { fetchVendorList, fetchCountryList } from '../../../reference_data/actions'
+import { fetchCountryList, fetchPlantList } from '../../../reference_data/actions'
 import Paper from 'material-ui/Paper'
 
 class LineItemComponent extends Component {
 
   componentDidMount() {
-      this.props.dispatch(fetchVendorList())
-      this.props.dispatch(fetchCountryList())
+    this.props.dispatch(fetchCountryList())
+    this.props.dispatch(fetchPlantList())
   }
 
   render() {
-    console.log('new line item..', this.props)
     const data = this.props.data || {}
     return (
       <div className="col-1-1">
@@ -50,6 +49,7 @@ class LineItemComponent extends Component {
 }
 
 LineItemComponent.propTypes = {
+  references: PropTypes.object,
   data: PropTypes.object,
   dispatch: PropTypes.func
 }
