@@ -1,10 +1,4 @@
 export default {
-  description: {
-    name: 'description',
-    floatingLabel: 'Item Description',
-    type: 'string',
-    required: true
-  },
   business_unit: {
     name: 'business_unit',
     floatingLabel: 'Business Unit',
@@ -16,7 +10,8 @@ export default {
     name: 'plant',
     floatingLabel: 'Plant',
     type: 'dropdown',
-    dataSource: [{ code: '5001', description: 'Dallas' }, { code: '5002', description: 'Miami' }],
+    valueField: 'plant',
+    label: 'name',
     required: true
   },
   part_number: {
@@ -97,12 +92,21 @@ export default {
     name: {
       name: 'material_name',
       floatingLabel: 'Item/Service',
-      type: 'string'
+      type: 'dropdown',
+      label: 'material',
+      valueField: 'material'
+    },
+    description: {
+      name: 'description',
+      floatingLabel: 'Item Description',
+      type: 'string',
+      disabled: true
     },
     group: {
       name: 'material_group',
       floatingLabel: 'Material Group',
-      type: 'string'
+      type: 'string',
+      disabled: true
     }
   },
   accounting: {
