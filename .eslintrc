@@ -46,10 +46,11 @@
         react/jsx-closing-bracket-location: 0,
         react/jsx-no-bind: 0,
         react/jsx-boolean-value: 0,
+        react/jsx-first-prop-new-line: 0,
 
         arrow-body-style: 0,
         comma-dangle: 0,
-        max-len: [2, 150, 2],
+        max-len: [2, 250, 2],
         new-cap: 0,
         no-unused-expressions: 0,
         no-extra-semi: 2,
