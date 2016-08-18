@@ -40,8 +40,7 @@ export default {
   currency: {
     name: 'currency',
     floatingLabel: 'Currency',
-    type: 'dropdown',
-    dataSource: [{ code: 'usd', description: 'USD' }, { code: 'eur', description: 'EUR' }, { code: 'inr', description: 'INR' }],
+    type: 'autocomplete',
     required: true
   },
   quantity: {
@@ -60,7 +59,7 @@ export default {
   uom: {
     name: 'uom',
     floatingLabel: 'UOM',
-    type: 'autocomplete',
+    type: 'dropdown',
     required: true
   },
   expected_deliver_date: {

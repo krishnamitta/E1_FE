@@ -51,3 +51,8 @@ export const fetchCountryList = () => {
   const url = buildURI(config.services.references.countries)
   return dispatchAction(url, REFERENCEDATA.LOAD_COUNTRIES)
 }
+
+export const fetchCurrentList = () => {
+  const url = buildURI(config.services.references.currencyList)
+  return dispatchAction(url, REFERENCEDATA.LOAD_CURRENCIES)
+}
