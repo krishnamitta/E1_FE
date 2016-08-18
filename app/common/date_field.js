@@ -1,27 +1,32 @@
 import React, { Component, PropTypes } from 'react'
-import TextField from 'material-ui/TextField'
+import DatePicker from 'material-ui/DatePicker'
 
 export default class DateField extends Component {
   constructor(props) {
     super(props)
-    this.state = { value: this.props.value || '' }
+    this.state = { value: this.props.value || null }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      value: nextProps.value || ''
-    })
+    this.setState({ value: nextProps.value || null })
   }
 
-  handleChange(event) {
-		this.setState({ value: event.target.value })
+  handleChange(event, date) {
+		this.setState({ value: date })
 	}
 
   render() {
     return (
-      <TextField
+      <DatePicker
         name={ this.props.name }
         value={ this.state.value }
+        minDate={ this.props.minDate }
+        maxDate={ this.props.maxDate }
+        floatingLabelText={ this.props.floatingLabel }
+        container="inline"
+        hintText={ this.props.hintText }
+        onChange={ (event, date) => this.handleChange(event, date) }
+        autoOk
       />
     )
   }
@@ -29,5 +34,9 @@ export default class DateField extends Component {
 
 DateField.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.string,
+  floatingLabel: PropTypes.string,
+  hintText: PropTypes.string,
+  minDate: PropTypes.string,
+  maxDate: PropTypes.string
 }

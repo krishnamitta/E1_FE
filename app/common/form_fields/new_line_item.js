@@ -65,7 +65,7 @@ export default {
   expected_deliver_date: {
     name: 'expected_delivery_date',
     floatingLabel: 'Expected Delivery Date',
-    type: 'string'
+    type: 'date'
   },
   ship_to_address: {
     street: {
