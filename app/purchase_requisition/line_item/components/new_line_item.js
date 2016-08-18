@@ -62,8 +62,8 @@ class LineItemComponent extends Component {
               <div className="col-1-4"><InputField attrs={ newLineItem.material.group } /></div>
               <div className="col-1-4"><InputField attrs={ newLineItem.uom } dataSource={ this.props.references.uoms } data={ data.material.uom } /></div>
               <div className="col-1-4"><InputField attrs={ newLineItem.quantity } data={ data.quantity } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.price } dataSource={ this.props.references.currencies } data={ data.material.unitprice } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.currency } data={ data.currency } /></div>
+              <div className="col-1-4"><InputField attrs={ newLineItem.price } data={ data.material.unitprice } /></div>
+              <div className="col-1-4"><InputField attrs={ newLineItem.currency } dataSource={ this.props.references.currencies } data={ data.currency } /></div>
               <div className="col-1-4"><InputField attrs={ newLineItem.total_price } data={ data.price } /></div>
             </div>
             <div className="col-1-1" style={ section.wrapper }>

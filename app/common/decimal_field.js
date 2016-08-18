@@ -19,14 +19,18 @@ export default class DecimalField extends Component {
     return value && value.toLocaleString()
   }
 
+  isDecimal(value) {
+    return (!value || /^\d+$/.test(e.target.value))
+  }
+
   validate(e) {
-    const valid = !e.target.value || /^\d+$/.test(e.target.value)
-    if (valid) {
-      this.setState({ errorText: '', value: e.target.value })
+    if (this.isDecimal(e.target.value)) {
+      this.setState({ errorText: '', value })
     } else {
-      this.setState({ errorText: 'Invalid value', value: e.target.value })
+      this.setState({ errorText: 'Invalid value', value })
     }
   }
+
   render() {
     return (
       <TextField
