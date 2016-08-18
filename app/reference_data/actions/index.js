@@ -21,38 +21,34 @@ const dispatchAction = (url, actionType) => {
   }
 }
 
-export const fetchVendorList = () => {
-  const url = buildURI(config.services.references.vendorList)
-  return dispatchAction(url, REFERENCEDATA.LOAD_VENDORS)
+const defaultReferences = () => {
+  const list = [
+    config.services.references.vendorList, config.services.references.UOMList,
+    config.services.references.plantList, config.services.references.businessUnitList,
+    config.services.references.currencyList
+  ]
+  const services = list.map((service, index) => { return axios.get(buildURI(service)) })
+  return services
 }
 
-export const fetchUOMList = () => {
-  const url = buildURI(config.services.references.UOMList)
-  return dispatchAction(url, REFERENCEDATA.LOAD_UOMS)
+export const loadReferenceData = () => {
+  return (dispatch) => {
+    axios.all(defaultReferences()).then(
+      axios.spread((vendorList, UOMList, plantList, businessUnitList, currencyList) => {
+        dispatch({ type: REFERENCEDATA.FETCH_ALL, data: {
+          vendors: vendorList.data.d.results,
+          uoms: UOMList.data.d.results,
+          plants: plantList.data.d.results,
+          business_units: businessUnitList.data.d.results,
+          currencies: currencyList.data.d.results
+         } })
+      })
+    )
+  }
 }
 
 export const fetchMaterialList = (plantId) => {
   const queryParameters = { plant: `'${plantId}'` }
   const url = buildURI(config.services.references.materialList, queryParameters)
   return dispatchAction(url, REFERENCEDATA.LOAD_MATERIALS)
-}
-
-export const fetchPlantList = () => {
-  const url = buildURI(config.services.references.plantList)
-  return dispatchAction(url, REFERENCEDATA.LOAD_PLANTS)
-}
-
-export const fetchBusinessUnitList = () => {
-  const url = buildURI(config.services.references.businessUnitList)
-  return dispatchAction(url, REFERENCEDATA.LOAD_BUSINESS_UNITS)
-}
-
-export const fetchCountryList = () => {
-  const url = buildURI(config.services.references.countries)
-  return dispatchAction(url, REFERENCEDATA.LOAD_COUNTRIES)
-}
-
-export const fetchCurrentList = () => {
-  const url = buildURI(config.services.references.currencyList)
-  return dispatchAction(url, REFERENCEDATA.LOAD_CURRENCIES)
 }

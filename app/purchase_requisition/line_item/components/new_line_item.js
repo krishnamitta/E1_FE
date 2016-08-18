@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import InputField from '../../../common/input_field'
 import newLineItem from '../../../common/form_fields/new_line_item'
 import { fetchShipToAddress, loadMaterialDetails } from '../actions'
-import { fetchMaterialList, fetchPlantList, fetchCurrentList,
-  fetchUOMList, fetchBusinessUnitList, fetchVendorList } from '../../../reference_data/actions'
+import { fetchMaterialList, loadReferenceData } from '../../../reference_data/actions'
 import Paper from 'material-ui/Paper'
 
 const section = {
@@ -14,11 +13,7 @@ const section = {
 class LineItemComponent extends Component {
 
   componentDidMount() {
-    this.props.dispatch(fetchPlantList())
-    this.props.dispatch(fetchVendorList())
-    this.props.dispatch(fetchUOMList())
-    this.props.dispatch(fetchCurrentList())
-    this.props.dispatch(fetchBusinessUnitList())
+    this.props.dispatch(loadReferenceData())
   }
 
   findPlantById(plantId) {
