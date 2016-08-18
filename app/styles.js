@@ -50,8 +50,8 @@ export default {
     fontSize: 14
   },
   floatingLabel: {
-    color: 'rgb(112, 110, 110)',
-    top: '35px',
+    color: backgroundColor,
+    top: '30px',
     width: '180%',
     fontSize
   },

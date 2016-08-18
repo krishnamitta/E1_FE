@@ -3,10 +3,12 @@ import StringField from './string_field'
 import DecimalField from './decimal_field'
 import EmailField from './email_field'
 import Dropdown from './select_field'
+import Autocomplete from './dropdown'
 
 const FieldMapper = {
   string: StringField,
   dropdown: Dropdown,
+  autocomplete: Autocomplete,
   number: DecimalField,
   email: EmailField
 }

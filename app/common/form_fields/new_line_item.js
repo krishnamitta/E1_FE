@@ -60,13 +60,45 @@ export default {
   uom: {
     name: 'uom',
     floatingLabel: 'UOM',
-    type: 'dropdown',
+    type: 'autocomplete',
     required: true
   },
   expected_deliver_date: {
     name: 'expected_delivery_date',
     floatingLabel: 'Expected Delivery Date',
     type: 'string'
+  },
+  ship_to_address: {
+    street: {
+      name: 'street',
+      floatingLabel: 'Street',
+      type: 'string',
+      disabled: true
+    },
+    city: {
+      name: 'city',
+      floatingLabel: 'City',
+      type: 'string',
+      disabled: true
+    },
+    zip: {
+      name: 'postalCode',
+      floatingLabel: 'Postal Code',
+      type: 'string',
+      disabled: true
+    },
+    country: {
+      name: 'country',
+      floatingLabel: 'Country',
+      type: 'string',
+      disabled: true
+    },
+    state: {
+      name: 'region',
+      floatingLabel: 'State',
+      type: 'string',
+      disabled: true
+    }
   },
   vendor: {
     name: {

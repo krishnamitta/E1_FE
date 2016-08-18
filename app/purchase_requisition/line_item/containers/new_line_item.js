@@ -3,7 +3,8 @@ import NewLineItem from '../components/new_line_item'
 
 const mapStateToProps = (state) => {
   return {
-    references: state.Referencedata
+    references: state.Referencedata,
+    data: state.LineItem
   }
 }
 
