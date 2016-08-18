@@ -9,9 +9,9 @@ export default class StringField extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      value: nextProps.data || ''
-    })
+    if (nextProps.data) {
+      this.setState({ value: nextProps.data })
+    }
   }
 
   handleChange(event) {

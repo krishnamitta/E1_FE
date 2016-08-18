@@ -9,9 +9,8 @@ export default class DecimalField extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.hasOwnProperty('data')) {
-      const convertedValue = nextProps.data || ''
-      this.setState({ value: this.formatValue(convertedValue) })
+    if (nextProps.data) {
+      this.setState({ value: this.formatValue(nextProps.data) })
     }
   }
 
@@ -19,12 +18,9 @@ export default class DecimalField extends Component {
     return value && value.toLocaleString()
   }
 
-  isDecimal(value) {
-    return (!value || /^\d+$/.test(e.target.value))
-  }
-
   validate(e) {
-    if (this.isDecimal(e.target.value)) {
+    const value = e.target.value
+    if (!value || /^\d+$/.test(value)) {
       this.setState({ errorText: '', value })
     } else {
       this.setState({ errorText: 'Invalid value', value })

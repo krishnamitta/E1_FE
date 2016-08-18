@@ -35,6 +35,7 @@ class LineItemComponent extends Component {
   }
 
   handleSubmit(event) {
+    console.log('cme here..')
     event.preventDefault()
     const form = event.target
     console.log('form elements..', form.elements)
@@ -45,7 +46,7 @@ class LineItemComponent extends Component {
     return (
       <div className="col-1-1">
         <Paper className="line_item_form">
-          <form className="lineItemForm" onSubmit={ (event) => this.handleSubmit(event) }>
+          <form className="lineItemForm" onsubmit={ (event) => this.handleSubmit(event) }>
             <div className="col-1-4"><InputField dataSource={ this.props.references.plants } attrs={ newLineItem.plant }
               onChange={ (event, i, value) => this.handlePlantChange(value) } data={ data.plant } /></div>
             <div className="col-1-4"><InputField dataSource={ this.props.references.business_units } attrs={ newLineItem.business_unit } data={ data.business_unit } /></div>
@@ -82,6 +83,7 @@ class LineItemComponent extends Component {
               <div className="col-1-5"><InputField attrs={ newLineItem.accounting.assignment_category } /></div>
             </section>
             <div className="col-1-1"><InputField attrs={ newLineItem.notes } data={ data.notes } /></div>
+            <div className="col-1-1"><input type="submit" /></div>
           </form>
         </Paper>
       </div>

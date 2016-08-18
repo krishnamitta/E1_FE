@@ -1,14 +1,26 @@
 import React, { Component, PropTypes } from 'react'
 import DatePicker from 'material-ui/DatePicker'
 
+const datepickerStyle = {
+  dialogContent: {
+    width: 200
+  },
+  dialogBodyContent: {
+    minHeight: 350,
+    minWidth: 250
+  }
+}
+
 export default class DateField extends Component {
   constructor(props) {
     super(props)
-    this.state = { value: this.props.value || null }
+    this.state = { value: this.props.data || null }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ value: nextProps.value || null })
+    if (nextProps.hasOwnProperty('data')) {
+      this.setState({ value: nextProps.data })
+    }
   }
 
   handleChange(event, date) {
@@ -26,6 +38,7 @@ export default class DateField extends Component {
         container="inline"
         hintText={ this.props.hintText }
         onChange={ (event, date) => this.handleChange(event, date) }
+        dialogContainerStyle={ datepickerStyle.dialogBodyContent }
         autoOk
       />
     )
@@ -34,7 +47,7 @@ export default class DateField extends Component {
 
 DateField.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.string,
+  data: PropTypes.string,
   floatingLabel: PropTypes.string,
   hintText: PropTypes.string,
   minDate: PropTypes.string,

@@ -24,12 +24,18 @@ export default class addLineItem extends Component {
     this.setState({ open: false })
   }
 
+  submitLineItem(event) {
+    const form = document.forms[0]
+    console.log('form...', form)
+    form.submit()
+  }
+
   render() {
     const actions = [
       <span style={ { marginRight: 5 } }>
         <FlatButton label="Cancel" onTouchTap={ (event) => this.closeDialog() } />
       </span>,
-      <FlatButton label="Submit" keyboardFocused={ true } />,
+      <FlatButton label="Submit" onTouchTap={ (event) => this.submitLineItem(event) } keyboardFocused={ true } />,
     ]
 
     return (
