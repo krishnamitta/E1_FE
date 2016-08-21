@@ -12,32 +12,18 @@ const datepickerStyle = {
 }
 
 export default class DateField extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { value: this.props.data || null }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.hasOwnProperty('data')) {
-      this.setState({ value: nextProps.data })
-    }
-  }
-
-  handleChange(event, date) {
-		this.setState({ value: date })
-	}
-
   render() {
+    const { input, floatingLabel, meta: { touched, error }, ...custom } = this.props
     return (
       <DatePicker
-        name={ this.props.name }
-        value={ this.state.value }
-        minDate={ this.props.minDate }
-        maxDate={ this.props.maxDate }
-        floatingLabelText={ this.props.floatingLabel }
+        minDate={ custom.minDate }
+        maxDate={ custom.maxDate }
+        floatingLabelText={ floatingLabel }
         container="inline"
-        hintText={ this.props.hintText }
-        onChange={ (event, date) => this.handleChange(event, date) }
+        hintText={ custom.hintText }
+        errorText={ touched && error }
+        onBlur={ (event, date) => input.onBlur(event, date) }
+        onChange={ (event, date) => input.onChange(date) }
         dialogContainerStyle={ datepickerStyle.dialogBodyContent }
         autoOk
       />
@@ -46,8 +32,8 @@ export default class DateField extends Component {
 }
 
 DateField.propTypes = {
-  name: PropTypes.string,
-  data: PropTypes.string,
+  input: PropTypes.object,
+  meta: PropTypes.object,
   floatingLabel: PropTypes.string,
   hintText: PropTypes.string,
   minDate: PropTypes.string,

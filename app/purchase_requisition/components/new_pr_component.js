@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import InputField from '../../common/input_field'
 import newPR from '../../common/form_fields/new_pr'
+import { Field, reduxForm } from 'redux-form'
 import styles from '../../styles'
 import AddLineItem from './add_line_item'
 import LineItemList from '../line_item/components/line_item_list'
@@ -39,7 +40,9 @@ export default class NewPRComponent extends Component {
     return (
       <div className="col-1-1">
         <h2 className="col-1-1" style={ styles.formHeader }>New Purchase Requisition</h2>
-        <div className="col-1-1"></div>
+        <div className="col-1-1">
+          <Field { ...newPR.title } component={ InputField } data={ data.title } />
+        </div>
         <div className="col-1-1" style={ Object.assign({}, { marginTop: 20 }, styles.headerBackground) }>
           <div className="col-1-12" style={ styles.header }>
             <h3 style={ Object.assign({}, styles.formHeader, styles.innerHeader) }>Items - { this.itemCount() }</h3>

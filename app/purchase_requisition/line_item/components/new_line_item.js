@@ -40,13 +40,6 @@ class LineItemComponent extends Component {
     this.props.dispatch(loadVendorAddress(vendorId))
   }
 
-  handleSubmit(event) {
-    console.log('cme here..')
-    event.preventDefault()
-    const form = event.target
-    console.log('form elements..', form.elements)
-  }
-
   render() {
     const data = this.props.data || {}
     const { handleSubmit } = this.props
