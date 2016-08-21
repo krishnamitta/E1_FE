@@ -28,6 +28,7 @@ class LineItemBtn extends Component {
 
   submitLineItem(event) {
     this.props.dispatch(addLineItemAction(this.props.lineItem))
+    this.closeDialog()
   }
 
   render() {

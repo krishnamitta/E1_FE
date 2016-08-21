@@ -3,7 +3,7 @@ import NewPRComponent from '../components/new_pr_component'
 
 const mapStateToProps = (state) => {
   return {
-    initialValues: state.PurchaseRequisition,
+    data: state.PurchaseRequisition,
     references: state.References
   }
 }

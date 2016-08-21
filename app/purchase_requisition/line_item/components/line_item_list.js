@@ -7,11 +7,13 @@ const headerStyle = {
 export default class LineItemList extends Component {
 
   renderGridBody(lineItem, index) {
+    const material = lineItem.material || {}
     return (
       <TableRow key={ index }>
         <TableRowColumn>{ lineItem.plant }</TableRowColumn>
         <TableRowColumn>{ lineItem.business_unit }</TableRowColumn>
-        <TableRowColumn>{ lineItem.material }</TableRowColumn>
+        <TableRowColumn>{ material.name }</TableRowColumn>
+        <TableRowColumn>{ material.group }</TableRowColumn>
         <TableRowColumn>{ lineItem.quantity }</TableRowColumn>
         <TableRowColumn>{ lineItem.price }</TableRowColumn>
         <TableRowColumn>{ lineItem.expected_deliver_date }</TableRowColumn>
@@ -29,13 +31,14 @@ export default class LineItemList extends Component {
                 <TableHeaderColumn style={ headerStyle }><span>Plant</span></TableHeaderColumn>
                 <TableHeaderColumn style={ headerStyle }><span>Business Unit</span></TableHeaderColumn>
                 <TableHeaderColumn style={ headerStyle }><span>Material</span></TableHeaderColumn>
+                <TableHeaderColumn style={ headerStyle }><span>Material Group</span></TableHeaderColumn>
                 <TableHeaderColumn style={ headerStyle }><span>Quantity</span></TableHeaderColumn>
                 <TableHeaderColumn style={ headerStyle }><span>Price</span></TableHeaderColumn>
                 <TableHeaderColumn style={ headerStyle }><span>Expected Delivery Date</span></TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody showRowHover={ true } displayRowCheckbox={ true }>
-              { this.props.line_items.length ? this.props.line_items.map((lineItem, index) => this.renderGridBody(lineItem, index)) : '' }
+              { this.props.line_items.map((lineItem, index) => this.renderGridBody(lineItem, index)) }
             </TableBody>
           </Table>
         </div>

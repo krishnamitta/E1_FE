@@ -22,7 +22,7 @@ class NewPRComponent extends Component {
   }
 
   itemCount() {
-    return 0
+    return this.props.data.line_items.length
   }
 
   renderLineItemDialog() {
@@ -35,7 +35,12 @@ class NewPRComponent extends Component {
     )
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('pr props..', nextProps);
+  }
+
   render() {
+    console.log('prp..', this.props.data)
     return (
       <div className="col-1-1">
         <form>
@@ -58,6 +63,7 @@ class NewPRComponent extends Component {
           </div>
         </form>
         <section className="col-1-1">
+          Length: { this.itemCount() }
           { this.itemCount() > 0 ? <LineItemList line_items={ this.props.data.line_items } /> : this.noLineItems() }
         </section>
       </div>
