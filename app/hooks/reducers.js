@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   PurchaseRequisition,
   Referencedata,
   LineItem,
-  resources: formReducer,
+  entities: formReducer,
   routing: routerReducer
 })
 export default rootReducer

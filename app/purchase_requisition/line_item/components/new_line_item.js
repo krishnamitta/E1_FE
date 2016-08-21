@@ -65,19 +65,19 @@ class LineItemComponent extends Component {
                   component={ InputField } onChange={ (event, i, value) => this.handleMaterialChange(value) } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.material.description } component={ InputField } data={ data.material.materialdesc } />
+                <Field { ...newLineItem.material.description } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.material.group } component={ InputField } dataSource={ this.props.references.material_groups } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.uom } component={ InputField } data={ data.material.uom } />
+                <Field { ...newLineItem.uom } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.quantity } component={ InputField } data={ data.quantity } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.price } component={ InputField } data={ data.material.unitprice } />
+                <Field { ...newLineItem.price } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.currency } component={ InputField }

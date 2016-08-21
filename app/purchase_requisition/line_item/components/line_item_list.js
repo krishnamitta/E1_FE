@@ -8,13 +8,13 @@ export default class LineItemList extends Component {
 
   renderGridBody(lineItem, index) {
     return (
-      <TableRow>
-        <TableRowColumn key={ index }>{ lineItem.plant }</TableRowColumn>
-        <TableRowColumn key={ index }>{ lineItem.business_unit }</TableRowColumn>
-        <TableRowColumn key={ index }>{ lineItem.material }</TableRowColumn>
-        <TableRowColumn key={ index }>{ lineItem.quantity }</TableRowColumn>
-        <TableRowColumn key={ index }>{ lineItem.price }</TableRowColumn>
-        <TableRowColumn key={ index }>{ lineItem.expected_deliver_date }</TableRowColumn>
+      <TableRow key={ index }>
+        <TableRowColumn>{ lineItem.plant }</TableRowColumn>
+        <TableRowColumn>{ lineItem.business_unit }</TableRowColumn>
+        <TableRowColumn>{ lineItem.material }</TableRowColumn>
+        <TableRowColumn>{ lineItem.quantity }</TableRowColumn>
+        <TableRowColumn>{ lineItem.price }</TableRowColumn>
+        <TableRowColumn>{ lineItem.expected_deliver_date }</TableRowColumn>
       </TableRow>
     )
   }

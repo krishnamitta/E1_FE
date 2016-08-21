@@ -25,9 +25,7 @@ export default class addLineItem extends Component {
   }
 
   submitLineItem(event) {
-    const form = document.forms[0]
-    console.log('form...', form)
-    form.submit()
+    console.log(this.props)
   }
 
   render() {

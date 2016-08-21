@@ -3,6 +3,17 @@ import TextField from 'material-ui/TextField'
 import Style from '../styles'
 
 class StringField extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = { value: this.props.data || '' }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.state.value = nextProps.data
+    console.log('string field next props..', nextProps)
+  }
+
   render() {
     const { input, floatingLabel, meta: { touched, error }, ...custom } = this.props
     return (

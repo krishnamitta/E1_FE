@@ -26,7 +26,7 @@ export default class NewPRComponent extends Component {
   }
 
   renderLineItemDialog() {
-    return <AddLineItem />
+    return <AddLineItem { ...this.props } />
   }
 
   renderAddLineItemBtn() {
@@ -41,7 +41,6 @@ export default class NewPRComponent extends Component {
       <div className="col-1-1">
         <h2 className="col-1-1" style={ styles.formHeader }>New Purchase Requisition</h2>
         <div className="col-1-1">
-          <Field { ...newPR.title } component={ InputField } data={ data.title } />
         </div>
         <div className="col-1-1" style={ Object.assign({}, { marginTop: 20 }, styles.headerBackground) }>
           <div className="col-1-12" style={ styles.header }>
