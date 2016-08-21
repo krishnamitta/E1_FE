@@ -49,10 +49,11 @@ class LineItemComponent extends Component {
 
   render() {
     const data = this.props.data || {}
+    const { handleSubmit } = this.props
     return (
       <div className="col-1-1">
         <Paper className="line_item_form">
-          <form className="lineItemForm" onSubmit={ (event) => this.handleSubmit(event) }>
+          <form className="lineItemForm" onSubmit={ handleSubmit }>
             <div className="col-1-4">
               <Field { ...newLineItem.plant } component={ InputField }
                 dataSource={ this.props.references.plants }
@@ -131,7 +132,8 @@ class LineItemComponent extends Component {
 LineItemComponent.propTypes = {
   references: PropTypes.object,
   data: PropTypes.object,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  handleSubmit: PropTypes.func
 }
 
 export default reduxForm({
