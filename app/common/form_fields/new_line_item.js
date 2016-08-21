@@ -46,7 +46,7 @@ export default {
   quantity: {
     name: 'quantity',
     floatingLabel: 'Quantity',
-    type: 'number',
+    type: 'string',
     required: true
   },
   notes: {
@@ -59,8 +59,9 @@ export default {
   uom: {
     name: 'uom',
     floatingLabel: 'UOM',
-    type: 'dropdown',
-    required: true
+    type: 'string',
+    required: true,
+    disabled: true
   },
   expected_deliver_date: {
     name: 'expected_delivery_date',
@@ -69,31 +70,31 @@ export default {
   },
   ship_to_address: {
     street: {
-      name: 'street',
+      name: 'ship_to_address.street',
       floatingLabel: 'Street',
       type: 'string',
       disabled: true
     },
     city: {
-      name: 'city',
+      name: 'ship_to_address.city',
       floatingLabel: 'City',
       type: 'string',
       disabled: true
     },
     zip: {
-      name: 'postalCode',
+      name: 'ship_to_address.postalCode',
       floatingLabel: 'Postal Code',
       type: 'string',
       disabled: true
     },
     country: {
-      name: 'country',
+      name: 'ship_to_address.country',
       floatingLabel: 'Country',
       type: 'string',
       disabled: true
     },
     state: {
-      name: 'region',
+      name: 'ship_to_address.region',
       floatingLabel: 'State',
       type: 'string',
       disabled: true
@@ -101,19 +102,19 @@ export default {
   },
   vendor: {
     name: {
-      name: 'vendor_name',
+      name: 'vendor.name',
       floatingLabel: 'Vendor Name',
       type: 'dropdown',
       dataSource: [{ code: '1', description: 'Vendor 1' }, { code: '2', description: 'Vendor 2' }],
       required: true
     },
     material_number: {
-      name: 'vendor_material_number',
+      name: 'vendor.material_number',
       floatingLabel: 'Vendor Material Number',
       type: 'string'
     },
     address: {
-      name: 'vendor_address',
+      name: 'vendor.address',
       floatingLabel: 'Vendor Address',
       type: 'string',
       disabled: true
@@ -121,23 +122,22 @@ export default {
   },
   material: {
     name: {
-      name: 'material_name',
+      name: 'material.name',
       floatingLabel: 'Item/Service',
       type: 'dropdown',
       label: 'material',
       valueField: 'material'
     },
     description: {
-      name: 'description',
+      name: 'material.description',
       floatingLabel: 'Item Description',
       type: 'string',
       disabled: true
     },
     group: {
-      name: 'material_group',
+      name: 'material.group',
       floatingLabel: 'Material Group',
-      type: 'string',
-      disabled: true
+      type: 'dropdown'
     }
   },
   accounting: {

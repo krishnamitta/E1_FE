@@ -39,7 +39,7 @@ export default class NewPRComponent extends Component {
     return (
       <div className="col-1-1">
         <h2 className="col-1-1" style={ styles.formHeader }>New Purchase Requisition</h2>
-        <div className="col-1-1"><InputField attrs={ newPR.title } data={ data.title } /></div>
+        <div className="col-1-1"></div>
         <div className="col-1-1" style={ Object.assign({}, { marginTop: 20 }, styles.headerBackground) }>
           <div className="col-1-12" style={ styles.header }>
             <h3 style={ Object.assign({}, styles.formHeader, styles.innerHeader) }>Items - { this.itemCount() }</h3>

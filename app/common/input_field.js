@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import StringField from './string_field'
 import DecimalField from './decimal_field'
 import EmailField from './email_field'
@@ -15,14 +15,14 @@ const FieldMapper = {
   date: DateField
 }
 
-export default class InputField extends React.Component {
+export default class InputField extends Component {
   render() {
-    const { attrs, ...other } = this.props
-    const newProps = Object.assign({}, attrs, other)
-    return React.createElement(FieldMapper[attrs.type], newProps)
+    const { type } = this.props
+    console.log('input field..', this.props)
+    return React.createElement(FieldMapper[type], this.props)
  }
 }
 
 InputField.propTypes = {
-  attrs: React.PropTypes.object
+  type: PropTypes.string
 }

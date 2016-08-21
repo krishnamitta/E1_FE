@@ -1,46 +1,28 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import TextField from 'material-ui/TextField'
 import Style from '../styles'
 
-export default class StringField extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { value: this.props.data || '' }
-  }
+const StringField = ({ input, floatingLabel, meta: { touched, error }, ...custom }) => (
+  <TextField hintText={ floatingLabel }
+    floatingLabelText={ floatingLabel }
+    className={ custom.className }
+    disabled={ custom.disabled }
+    errorText={ touched && error }
+    underlineShow={ custom.underlineShow }
+    style={ Style.root }
+    floatingLabelStyle={ Style.floatingLabel }
+    underlineFocusStyle={ Style.underlineFocus }
+    multiLine={ custom.multiLine }
+    { ...input }
+    { ...custom }
+    />
+)
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data) {
-      this.setState({ value: nextProps.data })
-    }
-  }
-
-  handleChange(event) {
-		this.setState({ value: event.target.value })
-	}
-
-  render() {
-    return (
-      <TextField
-        name={ this.props.name }
-        onChange={ (event) => this.handleChange(event) }
-        className={ this.props.className }
-        value={ this.state.value }
-        disabled={ this.props.disabled }
-        hintText={ this.props.hintText }
-        floatingLabelText={ this.props.floatingLabel }
-        underlineShow={ this.props.underlineShow }
-        errorText={ this.props.errorText }
-        style={ Style.root }
-        ref={ this.props.references }
-        type={ this.props.field_type || 'text' }
-        floatingLabelStyle={ Style.floatingLabel }
-        underlineFocusStyle={ Style.underlineFocus }
-        multiLine={ this.props.multiLine } />
-    )
-  }
-}
+export default StringField
 
 StringField.propTypes = {
+  input: PropTypes.object,
+  meta: PropTypes.object,
   className: PropTypes.string,
   hintText: PropTypes.string,
   floatingLabel: PropTypes.string,

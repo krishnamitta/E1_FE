@@ -6,8 +6,8 @@ import styles from '../../styles'
 import LineItemContainer from '../line_item/containers/new_line_item'
 
 const customContentStyle = {
-  width: '80%',
-  maxWidth: 'none',
+  width: '90%',
+  maxWidth: '90%',
 }
 
 export default class addLineItem extends Component {

@@ -1,4 +1,6 @@
 import { PR } from '../../../../config/constants'
+import config from 'config' // eslint-disable-line
+import { buildURI, dispatchAction } from '../../../utils/dispatch_request'
 
 export const fetchShipToAddress = (plant) => {
   return (dispatch) => {
@@ -9,5 +11,14 @@ export const fetchShipToAddress = (plant) => {
 export const loadMaterialDetails = (material) => {
   return (dispatch) => {
     dispatch({ type: PR.LINE_ITEM.LOAD_MATERIAL_DETAILS, data: material })
+  }
+}
+
+export const loadVendorAddress = (vendorId) => {
+  console.log('vendor id..', vendorId)
+  return (dispatch) => {
+    const queryParameters = { vendor: `'${vendorId}'` }
+    const url = buildURI(config.services.vendor.address, queryParameters)
+    return dispatchAction(url, PR.LOAD_VENDOR_ADDRESS)
   }
 }

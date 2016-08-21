@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
 import Auth from '../auth/reducers'
 import PurchaseRequisition from '../purchase_requisition/reducers'
 import Referencedata from '../reference_data/reducers'
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   PurchaseRequisition,
   Referencedata,
   LineItem,
+  resources: formReducer,
   routing: routerReducer
 })
 export default rootReducer

@@ -23,21 +23,24 @@ export default class SDropdown extends Component {
     )
   }
 
-  handleChange(event, i, value) {
+  handleChange(event, i, value, input) {
     this.setState({ value })
+    input.onChange(value)
     if (this.props.hasOwnProperty('onChange')) {
       this.props.onChange(event, i, value)
     }
   }
 
   render() {
+    const { input, meta: { touched, error } } = this.props
     return (
       <div>
         <SelectField
-          name={ this.props.name }
+          { ...input }
           value={ this.state.value }
-          onChange={ this.handleChange }
+          onChange={ (event, i, value) => this.handleChange(event, i, value, input) }
           style={ Style.root }
+          errorText={ touched && error }
           floatingLabelStyle={ Style.floatingLabel }
           underlineFocusStyle={ Style.underlineFocus }
           floatingLabelText={ this.props.floatingLabel }
@@ -51,6 +54,8 @@ export default class SDropdown extends Component {
 
 SDropdown.propTypes = {
   data: PropTypes.string,
+  meta: PropTypes.object,
+  input: PropTypes.object,
   name: PropTypes.string,
   valueField: PropTypes.string,
   label: PropTypes.string,

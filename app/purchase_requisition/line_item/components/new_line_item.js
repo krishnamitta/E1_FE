@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react'
+import { Field, reduxForm } from 'redux-form'
 import InputField from '../../../common/input_field'
 import newLineItem from '../../../common/form_fields/new_line_item'
-import { fetchShipToAddress, loadMaterialDetails } from '../actions'
+import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress } from '../actions'
 import { fetchMaterialList, loadReferenceData } from '../../../reference_data/actions'
 import Paper from 'material-ui/Paper'
+import AddressComponent from '../../../address/components'
 
 const section = {
   wrapper: { paddingRight: 0, paddingTop: 5 },
@@ -27,11 +29,15 @@ class LineItemComponent extends Component {
   handlePlantChange(plantId) {
     this.props.dispatch((loadMaterialDetails({}))) // clear existing material
     this.props.dispatch(fetchMaterialList(plantId))
-    this.props.dispatch((fetchShipToAddress(this.findPlantById(plantId))))
+    this.props.dispatch(fetchShipToAddress(this.findPlantById(plantId)))
   }
 
   handleMaterialChange(materialId) {
-    this.props.dispatch((loadMaterialDetails(this.findMaterialById(materialId))))
+    this.props.dispatch(loadMaterialDetails(this.findMaterialById(materialId)))
+  }
+
+  handleVendorChange(vendorId) {
+    this.props.dispatch(loadVendorAddress(vendorId))
   }
 
   handleSubmit(event) {
@@ -46,44 +52,75 @@ class LineItemComponent extends Component {
     return (
       <div className="col-1-1">
         <Paper className="line_item_form">
-          <form className="lineItemForm" onsubmit={ (event) => this.handleSubmit(event) }>
-            <div className="col-1-4"><InputField dataSource={ this.props.references.plants } attrs={ newLineItem.plant }
-              onChange={ (event, i, value) => this.handlePlantChange(value) } data={ data.plant } /></div>
-            <div className="col-1-4"><InputField dataSource={ this.props.references.business_units } attrs={ newLineItem.business_unit } data={ data.business_unit } /></div>
-            <div className="col-1-4"><InputField attrs={ newLineItem.expected_deliver_date } data={ data.expected_deliver_date } /></div>
-            <div className="col-1-1" style={ { paddingRight: 0 } }>
-              <div className="col-1-4"><InputField attrs={ newLineItem.material.name } dataSource={ this.props.references.materials }
-                onChange={ (event, i, value) => this.handleMaterialChange(value) } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.material.description } data={ data.material.materialdesc } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.material.group } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.uom } dataSource={ this.props.references.uoms } data={ data.material.uom } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.quantity } data={ data.quantity } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.price } data={ data.material.unitprice } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.currency } dataSource={ this.props.references.currencies } data={ data.currency } /></div>
-              <div className="col-1-4"><InputField attrs={ newLineItem.total_price } data={ data.price } /></div>
+          <form className="lineItemForm" onSubmit={ (event) => this.handleSubmit(event) }>
+            <div className="col-1-4">
+              <Field { ...newLineItem.plant } component={ InputField }
+                dataSource={ this.props.references.plants }
+                onChange={ (event, i, value) => this.handlePlantChange(value) } data={ data.plant } />
             </div>
-            <div className="col-1-1" style={ section.wrapper }>
-              <h5 style={ section.innerHeader }>Ship to address</h5>
-              <div className="col-1-4"><InputField attrs={ newLineItem.ship_to_address.street } data={ data.shipToAddress.street } /></div>
-              <div className="col-1-5"><InputField attrs={ newLineItem.ship_to_address.city } data={ data.shipToAddress.city } /></div>
-              <div className="col-1-5"><InputField attrs={ newLineItem.ship_to_address.country } data={ data.shipToAddress.country } /></div>
-              <div className="col-1-5"><InputField attrs={ newLineItem.ship_to_address.state } data={ data.shipToAddress.state } /></div>
-              <div className="col-1-8"><InputField attrs={ newLineItem.ship_to_address.zip } data={ data.shipToAddress.postalCode } /></div>
+            <div className="col-1-4">
+              <Field { ...newLineItem.business_unit } component={ InputField } dataSource={ this.props.references.business_units }
+                data={ data.business_unit } />
             </div>
+            <div className="col-1-4">
+              <Field { ...newLineItem.expected_deliver_date } component={ InputField } data={ data.expected_deliver_date } />
+            </div>
+            <div className="col-1-1">
+              <div className="col-1-4">
+                <Field { ...newLineItem.material.name } dataSource={ this.props.references.materials }
+                  component={ InputField } onChange={ (event, i, value) => this.handleMaterialChange(value) } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.material.description } component={ InputField } data={ data.material.materialdesc } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.material.group } component={ InputField } dataSource={ this.props.references.material_groups } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.uom } component={ InputField } data={ data.material.uom } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.quantity } component={ InputField } data={ data.quantity } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.price } component={ InputField } data={ data.material.unitprice } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.currency } component={ InputField }
+                  dataSource={ this.props.references.currencies } data={ data.currency } />
+              </div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.total_price } component={ InputField } data={ data.price } />
+              </div>
+            </div>
+            <AddressComponent header="Ship To Address" data={ data.shipToAddress } />
             <div className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Vendor</h5>
-              <div className="col-1-4"><InputField dataSource={ this.props.references.vendors } attrs={ newLineItem.vendor.name } /></div>
-              <div className="col-1-5"><InputField attrs={ newLineItem.vendor.material_number } /></div>
-              <div className="col-1-5"><InputField attrs={ newLineItem.part_number } /></div>
-              <div className="col-1-3"><InputField attrs={ newLineItem.vendor.address } /></div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.vendor.name } component={ InputField }
+                  onChange={ (event, i, value) => this.handleVendorChange(value) }
+                  dataSource={ this.props.references.vendors } />
+              </div>
+              <div className="col-1-5">
+                <Field { ...newLineItem.vendor.material_number } component={ InputField } />
+              </div>
+              <div className="col-1-5">
+                <Field { ...newLineItem.part_number } component={ InputField } />
+              </div>
+              <AddressComponent data={ data.shipToAddress } />
             </div>
             <section className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Accounting</h5>
-              <div className="col-1-4"><InputField attrs={ newLineItem.accounting.distribution } /></div>
-              <div className="col-1-5"><InputField attrs={ newLineItem.accounting.assignment_category } /></div>
+              <div className="col-1-4">
+                <Field { ...newLineItem.accounting.distribution } component={ InputField } />
+              </div>
+              <div className="col-1-5">
+                <Field { ...newLineItem.accounting.assignment_category } component={ InputField } />
+              </div>
             </section>
-            <div className="col-1-1"><InputField attrs={ newLineItem.notes } data={ data.notes } /></div>
-            <div className="col-1-1"><input type="submit" /></div>
+            <div className="col-1-1">
+              <Field { ...newLineItem.notes } component={ InputField } />
+            </div>
           </form>
         </Paper>
       </div>
@@ -97,4 +134,6 @@ LineItemComponent.propTypes = {
   dispatch: PropTypes.func
 }
 
-export default LineItemComponent
+export default reduxForm({
+  form: 'line_item'
+})(LineItemComponent)
