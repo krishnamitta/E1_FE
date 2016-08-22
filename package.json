@@ -78,7 +78,7 @@
     "build:prod": "cross-env NODE_ENV=production webpack --config config/webpack/webpack.production.js --color -p",
     "start:prod": "cross-env NODE_ENV=production pm2 start index.js",
     "postinstall": "npm run start:production",
-    "start": "npm run start:development",
+    "start": "npm run start:production",
     "start:development": "npm run build:dev && npm run start:dev",
     "start:production": "npm run build:prod && npm run start:prod",
     "eslint": "eslint src tools"
