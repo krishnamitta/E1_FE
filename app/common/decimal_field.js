@@ -46,7 +46,9 @@ DecimalField.propTypes = {
   underlineShow: PropTypes.bool,
   floatingLabel: PropTypes.string,
   disabled: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  input: PropTypes.object,
+  meta: PropTypes.object
 }
 
 DecimalField.defaultProps = {

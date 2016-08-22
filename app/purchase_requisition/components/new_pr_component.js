@@ -35,12 +35,7 @@ class NewPRComponent extends Component {
     )
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('pr props..', nextProps);
-  }
-
   render() {
-    console.log('prp..', this.props)
     return (
       <div className="col-1-1">
         <form>

@@ -19,7 +19,6 @@ export default class SDropdown extends Component {
 
   render() {
     const { input, meta: { touched, error } } = this.props
-    console.log('input..', input)
     return (
       <div>
         <SelectField

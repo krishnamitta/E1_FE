@@ -15,7 +15,6 @@ export const loadMaterialDetails = (material) => {
 }
 
 export const loadVendorAddress = (vendorId) => {
-  console.log('vendor id..', vendorId)
   return (dispatch) => {
     const queryParameters = { vendor: `'${vendorId}'` }
     const url = buildURI(config.services.vendor.address, queryParameters)

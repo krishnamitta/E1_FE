@@ -1,30 +1,30 @@
 export default {
   street: {
-    name: 'street',
+    name: 'shipToAddress.street',
     floatingLabel: 'Street',
     type: 'string',
     disabled: true
   },
   city: {
-    name: 'city',
+    name: 'shipToAddress.city',
     floatingLabel: 'City',
     type: 'string',
     disabled: true
   },
   zip: {
-    name: 'postalCode',
+    name: 'shipToAddress.postalCode',
     floatingLabel: 'Postal Code',
     type: 'string',
     disabled: true
   },
   country: {
-    name: 'country',
+    name: 'shipToAddress.country',
     floatingLabel: 'Country',
     type: 'string',
     disabled: true
   },
   state: {
-    name: 'region',
+    name: 'shipToAddress.state',
     floatingLabel: 'State',
     type: 'string',
     disabled: true
