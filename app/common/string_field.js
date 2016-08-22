@@ -3,14 +3,7 @@ import TextField from 'material-ui/TextField'
 import Style from '../styles'
 
 class StringField extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { value: this.props.data || '' }
-  }
-
   componentWillReceiveProps(nextProps) {
-    this.state.value = nextProps.data
     console.log('string field next props..', nextProps)
   }
 
@@ -21,13 +14,13 @@ class StringField extends Component {
         floatingLabelText={ floatingLabel }
         className={ custom.className }
         disabled={ custom.disabled }
-        onBlur={ (event) => input.onBlur(event) }
         errorText={ touched && error }
         underlineShow={ custom.underlineShow }
         style={ Style.root }
         floatingLabelStyle={ Style.floatingLabel }
         underlineFocusStyle={ Style.underlineFocus }
         multiLine={ custom.multiLine }
+        { ...input }
         { ...custom } />
     )
   }

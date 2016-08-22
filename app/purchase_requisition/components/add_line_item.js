@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
   return {
     references: state.Referencedata,
     data: state.LineItem,
-    lineItem: (state.entities.line_item ? state.entities.line_item.values : {})
+    lineItem: (state.form.line_item ? state.form.line_item.values : {})
   }
 }
 

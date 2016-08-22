@@ -4,28 +4,14 @@ import MenuItem from 'material-ui/MenuItem';
 import Style from '../styles'
 
 export default class SDropdown extends Component {
-
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.state = { value: this.props.data || '' }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value) {
-      this.setState({ value: nextProps.value })
-    }
-  }
-
   renderMenuItem(item, index) {
     return (
       <MenuItem key={ index } value={ item[this.props.valueField] } primaryText={ item[this.props.label] } />
     )
   }
 
-  handleChange(event, i, value, input) {
-    this.setState({ value })
-    input.onChange(value)
+  handleChange(event, i, value) {
+    this.props.input.onChange(value)
     if (this.props.hasOwnProperty('onChange')) {
       this.props.onChange(event, i, value)
     }
@@ -33,12 +19,12 @@ export default class SDropdown extends Component {
 
   render() {
     const { input, meta: { touched, error } } = this.props
+    console.log('input..', input)
     return (
       <div>
         <SelectField
           { ...input }
-          value={ this.state.value }
-          onChange={ (event, i, value) => this.handleChange(event, i, value, input) }
+          onChange={ (event, i, value) => this.handleChange(event, i, value) }
           style={ Style.root }
           errorText={ touched && error }
           floatingLabelStyle={ Style.floatingLabel }
