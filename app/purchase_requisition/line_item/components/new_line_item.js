@@ -87,7 +87,7 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.total_price } component={ InputField } data={ data.price } />
               </div>
             </div>
-            <AddressComponent header="Ship To Address" data={ data.shipToAddress } />
+            <AddressComponent header="Ship To Address" data={ data.shipToAddress } addressType="shipToAddress" />
             <div className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Vendor</h5>
               <div className="col-1-4">
@@ -101,7 +101,7 @@ class LineItemComponent extends Component {
               <div className="col-1-5">
                 <Field { ...newLineItem.part_number } component={ InputField } />
               </div>
-              <AddressComponent data={ data.shipToAddress } />
+              <AddressComponent data={ data.shipToAddress } addressType="vendorAddress" />
             </div>
             <section className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Accounting</h5>
