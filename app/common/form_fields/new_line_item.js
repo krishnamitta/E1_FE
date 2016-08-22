@@ -24,12 +24,6 @@ export default {
     floatingLabel: 'Pruchasing Organization',
     type: 'string'
   },
-  price: {
-    name: 'price',
-    floatingLabel: 'Price',
-    type: 'number',
-    required: true
-  },
   total_price: {
     name: 'total_price',
     floatingLabel: 'Total Value',
@@ -55,13 +49,6 @@ export default {
     type: 'string',
     multiLine: true,
     required: false
-  },
-  uom: {
-    name: 'uom',
-    floatingLabel: 'UOM',
-    type: 'string',
-    required: true,
-    disabled: true
   },
   expected_deliver_date: {
     name: 'expected_delivery_date',
@@ -138,6 +125,19 @@ export default {
       name: 'material.group',
       floatingLabel: 'Material Group',
       type: 'dropdown'
+    },
+    price: {
+      name: 'material.price',
+      floatingLabel: 'Price',
+      type: 'number',
+      required: true
+    },
+    uom: {
+      name: 'material.uom',
+      floatingLabel: 'UOM',
+      type: 'string',
+      required: true,
+      disabled: true
     }
   },
   accounting: {
