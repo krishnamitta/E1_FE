@@ -10,9 +10,10 @@ const PlantAddress = (plant) => {
   }
 }
 
-const LineItem = (state = { shipToAddress: {}, material: {} }, action) => {
+const LineItem = (state = {}, action) => {
   switch (action.type) {
     case PR.LINE_ITEM.SHIP_TO_ADDRESS:
+      console.log('state...', state)
       return Object.assign({}, state, { shipToAddress: PlantAddress(action.data) })
     case PR.LINE_ITEM.LOAD_MATERIAL_DETAILS:
       return Object.assign({}, state, { material: action.data })

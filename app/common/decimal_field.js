@@ -5,17 +5,7 @@ import Style from '../styles'
 export default class DecimalField extends Component {
   constructor(props) {
     super(props)
-    this.state = { errorText: '', value: this.formatValue(this.props.data) || 0 }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data) {
-      this.setState({ value: this.formatValue(nextProps.data) })
-    }
-  }
-
-  formatValue(value) {
-    return value && value.toLocaleString()
+    this.state = { errorText: '' }
   }
 
   validate(e) {
@@ -28,20 +18,22 @@ export default class DecimalField extends Component {
   }
 
   render() {
+    const { input, meta: { touched, error }, ...custom } = this.props
     return (
       <TextField
         style={ Style.root }
-        disabled={ this.props.disabled }
-        floatingLabelText={ this.props.floatingLabel }
+        disabled={ custom.disabled }
+        floatingLabelText={ custom.floatingLabel }
         floatingLabelStyle={ Style.floatingLabel }
-        name={ this.props.name }
-        value={ this.state.value }
-        underlineShow={ this.props.underlineShow }
+        name={ custom.name }
+        underlineShow={ custom.underlineShow }
         underlineFocusStyle={ Style.underlineFocus }
-        required={ this.props.required }
+        required={ custom.required }
         onChange={ (event) => { this.validate(event) } }
-        errorText={ this.state.errorText }
-        floatingLabelFixed={ this.props.disabled } />
+        errorText={ touched && error }
+        floatingLabelFixed={ custom.disabled }
+        { ...input }
+        />
       )
   }
 }

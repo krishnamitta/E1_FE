@@ -40,7 +40,7 @@ class NewPRComponent extends Component {
   }
 
   render() {
-    console.log('prp..', this.props.data)
+    console.log('prp..', this.props)
     return (
       <div className="col-1-1">
         <form>
@@ -75,5 +75,5 @@ NewPRComponent.propTypes = {
 }
 
 export default reduxForm({
-  form: 'purchase_requisition'
+  form: 'PurchaseRequisition'
 })(NewPRComponent)

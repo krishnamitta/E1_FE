@@ -68,8 +68,8 @@ LineItemBtn.propTypes = {
 const mapStateToProps = (state) => {
   return {
     references: state.Referencedata,
-    data: state.LineItem,
-    lineItem: (state.form.line_item ? state.form.line_item.values : {})
+    data: state.form.LineItem,
+    lineItem: (state.form.LineItem ? state.form.LineItem.values : {})
   }
 }
 

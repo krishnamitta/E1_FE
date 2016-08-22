@@ -130,5 +130,5 @@ LineItemComponent.propTypes = {
 }
 
 export default reduxForm({
-  form: 'line_item'
+  form: 'LineItem'
 })(LineItemComponent)

@@ -8,10 +8,11 @@ import LineItem from '../purchase_requisition/line_item/reducers'
 
 const rootReducer = combineReducers({
   Auth,
-  PurchaseRequisition,
   Referencedata,
-  LineItem,
-  form: formReducer,
+  form: formReducer.plugin({
+    LineItem,
+    PurchaseRequisition
+  }),
   routing: routerReducer
 })
 export default rootReducer
