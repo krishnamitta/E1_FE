@@ -71,13 +71,13 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.material.group } component={ InputField } dataSource={ this.props.references.material_groups } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.uom } component={ InputField } />
+                <Field { ...newLineItem.material.uom } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.quantity } component={ InputField } data={ data.quantity } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.price } component={ InputField } />
+                <Field { ...newLineItem.material.price } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.currency } component={ InputField }
@@ -112,6 +112,9 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.accounting.assignment_category } component={ InputField } />
               </div>
             </section>
+            <div className="col-1-1">
+              <Field { ...newLineItem.notes } component={ InputField } />
+            </div>
             <div className="col-1-1">
               <Field { ...newLineItem.notes } component={ InputField } />
             </div>
