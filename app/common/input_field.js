@@ -18,7 +18,6 @@ const FieldMapper = {
 export default class InputField extends Component {
   render() {
     const { type } = this.props
-    console.log('input field..', this.props)
     return React.createElement(FieldMapper[type], this.props)
  }
 }

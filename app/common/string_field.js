@@ -1,24 +1,26 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import TextField from 'material-ui/TextField'
 import Style from '../styles'
 
-const StringField = ({ input, floatingLabel, meta: { touched, error }, ...custom }) => (
-  <TextField hintText={ floatingLabel }
-    floatingLabelText={ floatingLabel }
-    className={ custom.className }
-    disabled={ custom.disabled }
-    errorText={ touched && error }
-    underlineShow={ custom.underlineShow }
-    style={ Style.root }
-    floatingLabelStyle={ Style.floatingLabel }
-    underlineFocusStyle={ Style.underlineFocus }
-    multiLine={ custom.multiLine }
-    { ...input }
-    { ...custom }
-    />
-)
-
-export default StringField
+class StringField extends Component {
+  render() {
+    const { input, floatingLabel, meta: { touched, error }, ...custom } = this.props
+    return (
+      <TextField hintText={ floatingLabel }
+        floatingLabelText={ floatingLabel }
+        className={ custom.className }
+        disabled={ custom.disabled }
+        errorText={ touched && error }
+        underlineShow={ custom.underlineShow }
+        style={ Style.root }
+        floatingLabelStyle={ Style.floatingLabel }
+        underlineFocusStyle={ Style.underlineFocus }
+        multiLine={ custom.multiLine }
+        { ...input }
+        { ...custom } />
+    )
+  }
+}
 
 StringField.propTypes = {
   input: PropTypes.object,
@@ -43,3 +45,5 @@ StringField.defaultProps = {
   multiLine: false,
   underlineShow: true
 }
+
+export default StringField

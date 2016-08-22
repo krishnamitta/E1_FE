@@ -1,7 +1,7 @@
 import { PR } from '../../../config/constants'
 
-export const addLineItem = () => {
+export const addLineItemAction = (lineItem) => {
   return (dispatch) => {
-    dispatch({ type: PR.ADD_PR_LINE_ITEM, data: { vendor: 'Vendor 1', business_unit: 'G1 P2P', currency: 'USD' } })
+    dispatch({ type: PR.ADD_PR_LINE_ITEM, data: lineItem })
   }
 }

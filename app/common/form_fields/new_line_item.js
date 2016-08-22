@@ -24,12 +24,6 @@ export default {
     floatingLabel: 'Pruchasing Organization',
     type: 'string'
   },
-  price: {
-    name: 'price',
-    floatingLabel: 'Price',
-    type: 'number',
-    required: true
-  },
   total_price: {
     name: 'total_price',
     floatingLabel: 'Total Value',
@@ -56,13 +50,6 @@ export default {
     multiLine: true,
     required: false
   },
-  uom: {
-    name: 'uom',
-    floatingLabel: 'UOM',
-    type: 'string',
-    required: true,
-    disabled: true
-  },
   expected_deliver_date: {
     name: 'expected_delivery_date',
     floatingLabel: 'Expected Delivery Date',
@@ -70,31 +57,31 @@ export default {
   },
   ship_to_address: {
     street: {
-      name: 'ship_to_address.street',
+      name: 'shipToAddress.street',
       floatingLabel: 'Street',
       type: 'string',
       disabled: true
     },
     city: {
-      name: 'ship_to_address.city',
+      name: 'shipToAddress.city',
       floatingLabel: 'City',
       type: 'string',
       disabled: true
     },
     zip: {
-      name: 'ship_to_address.postalCode',
+      name: 'shipToAddress.postalCode',
       floatingLabel: 'Postal Code',
       type: 'string',
       disabled: true
     },
     country: {
-      name: 'ship_to_address.country',
+      name: 'shipToAddress.country',
       floatingLabel: 'Country',
       type: 'string',
       disabled: true
     },
     state: {
-      name: 'ship_to_address.region',
+      name: 'shipToAddress.region',
       floatingLabel: 'State',
       type: 'string',
       disabled: true
@@ -138,6 +125,19 @@ export default {
       name: 'material.group',
       floatingLabel: 'Material Group',
       type: 'dropdown'
+    },
+    price: {
+      name: 'material.price',
+      floatingLabel: 'Price',
+      type: 'number',
+      required: true
+    },
+    uom: {
+      name: 'material.uom',
+      floatingLabel: 'UOM',
+      type: 'string',
+      required: true,
+      disabled: true
     }
   },
   accounting: {

@@ -1,16 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import styles from '../../styles'
-import LineItemContainer from '../line_item/containers/new_line_item'
+import { addLineItemAction } from '../actions'
+import { connect } from 'react-redux'
+import NewLineItem from '../line_item/components/new_line_item'
 
 const customContentStyle = {
   width: '90%',
-  maxWidth: '90%',
+  maxWidth: '100%',
 }
 
-export default class addLineItem extends Component {
+class LineItemBtn extends Component {
   constructor(props) {
     super(props)
     this.state = { open: false }
@@ -25,9 +27,8 @@ export default class addLineItem extends Component {
   }
 
   submitLineItem(event) {
-    const form = document.forms[0]
-    console.log('form...', form)
-    form.submit()
+    this.props.dispatch(addLineItemAction(this.props.lineItem))
+    this.closeDialog()
   }
 
   render() {
@@ -51,10 +52,25 @@ export default class addLineItem extends Component {
           onRequestClose={ this.handleClose }
           modal={ false }
           actions={ actions }>
-          <LineItemContainer />
+          <NewLineItem { ...this.props } />
         </Dialog>
       </div>
     )
   }
 
 }
+
+LineItemBtn.propTypes = {
+  lineItem: PropTypes.object,
+  dispatch: PropTypes.func
+}
+
+const mapStateToProps = (state) => {
+  return {
+    references: state.Referencedata,
+    data: state.form.LineItem,
+    lineItem: (state.form.LineItem ? state.form.LineItem.values : {})
+  }
+}
+
+export default connect(mapStateToProps)(LineItemBtn)

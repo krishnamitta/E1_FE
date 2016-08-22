@@ -40,19 +40,13 @@ class LineItemComponent extends Component {
     this.props.dispatch(loadVendorAddress(vendorId))
   }
 
-  handleSubmit(event) {
-    console.log('cme here..')
-    event.preventDefault()
-    const form = event.target
-    console.log('form elements..', form.elements)
-  }
-
   render() {
     const data = this.props.data || {}
+    const { handleSubmit } = this.props
     return (
       <div className="col-1-1">
         <Paper className="line_item_form">
-          <form className="lineItemForm" onSubmit={ (event) => this.handleSubmit(event) }>
+          <form className="lineItemForm" onSubmit={ handleSubmit }>
             <div className="col-1-4">
               <Field { ...newLineItem.plant } component={ InputField }
                 dataSource={ this.props.references.plants }
@@ -71,19 +65,19 @@ class LineItemComponent extends Component {
                   component={ InputField } onChange={ (event, i, value) => this.handleMaterialChange(value) } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.material.description } component={ InputField } data={ data.material.materialdesc } />
+                <Field { ...newLineItem.material.description } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.material.group } component={ InputField } dataSource={ this.props.references.material_groups } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.uom } component={ InputField } data={ data.material.uom } />
+                <Field { ...newLineItem.material.uom } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.quantity } component={ InputField } data={ data.quantity } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.price } component={ InputField } data={ data.material.unitprice } />
+                <Field { ...newLineItem.material.price } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.currency } component={ InputField }
@@ -93,7 +87,7 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.total_price } component={ InputField } data={ data.price } />
               </div>
             </div>
-            <AddressComponent header="Ship To Address" data={ data.shipToAddress } />
+            <AddressComponent header="Ship To Address" data={ data.shipToAddress } addressType="shipToAddress" />
             <div className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Vendor</h5>
               <div className="col-1-4">
@@ -107,7 +101,7 @@ class LineItemComponent extends Component {
               <div className="col-1-5">
                 <Field { ...newLineItem.part_number } component={ InputField } />
               </div>
-              <AddressComponent data={ data.shipToAddress } />
+              <AddressComponent data={ data.shipToAddress } addressType="vendorAddress" />
             </div>
             <section className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Accounting</h5>
@@ -121,6 +115,9 @@ class LineItemComponent extends Component {
             <div className="col-1-1">
               <Field { ...newLineItem.notes } component={ InputField } />
             </div>
+            <div className="col-1-1">
+              <Field { ...newLineItem.notes } component={ InputField } />
+            </div>
           </form>
         </Paper>
       </div>
@@ -131,9 +128,10 @@ class LineItemComponent extends Component {
 LineItemComponent.propTypes = {
   references: PropTypes.object,
   data: PropTypes.object,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  handleSubmit: PropTypes.func
 }
 
 export default reduxForm({
-  form: 'line_item'
+  form: 'LineItem'
 })(LineItemComponent)
