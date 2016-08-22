@@ -20,7 +20,7 @@ export default class DecimalField extends Component {
 
   validate(e) {
     const value = e.target.value
-    if (!value || /^\d+$/.test(value)) {
+    if (!value || /^\d{0,2}(\.\d{1,2})?$/.test(value)) {
       this.setState({ errorText: '', value })
     } else {
       this.setState({ errorText: 'Invalid value', value })

@@ -63,7 +63,6 @@ class NewPRComponent extends Component {
           </div>
         </form>
         <section className="col-1-1">
-          Length: { this.itemCount() }
           { this.itemCount() > 0 ? <LineItemList line_items={ this.props.data.line_items } /> : this.noLineItems() }
         </section>
       </div>
