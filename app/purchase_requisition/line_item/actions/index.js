@@ -20,8 +20,8 @@ export const loadVendorAddress = (vendorId) => {
   return dispatchAction(url, PR.LOAD_VENDOR_ADDRESS)
 }
 
-export const calculateTotalPriceForLineItem = (price, quantity) => {
+export const calculateTotalPriceForLineItem = (value1, value2) => {
   return (dispatch) => {
-    dispatch({ type: PR.LINE_ITEM.CALCULATE_TOTAL_PRICE_FOR_LINEITEM, data: (price * quantity) })
+    dispatch({ type: PR.LINE_ITEM.CALCULATE_TOTAL_PRICE_FOR_LINEITEM, data: (value1 * value2) })
   }
 }

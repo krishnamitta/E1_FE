@@ -25,7 +25,7 @@ export default {
     type: 'string'
   },
   total_price: {
-    name: 'total_price',
+    name: 'totalPrice',
     floatingLabel: 'Total Value',
     type: 'string',
     required: true,
@@ -44,11 +44,15 @@ export default {
     required: true
   },
   notes: {
-    name: 'notes',
-    floatingLabel: 'Notes',
     type: 'string',
     multiLine: true,
     required: false
+  },
+  noteTypes: {
+    type: 'dropdown',
+    multiLine: true,
+    required: false,
+    dataSource: [{ code: '1', description: 'Internal' }, { code: '2', description: 'External' }]
   },
   expected_deliver_date: {
     name: 'expected_delivery_date',
@@ -129,7 +133,7 @@ export default {
     price: {
       name: 'material.price',
       floatingLabel: 'Price',
-      type: 'number',
+      type: 'string',
       required: true
     },
     uom: {

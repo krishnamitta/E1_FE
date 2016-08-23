@@ -3,10 +3,19 @@ import TextField from 'material-ui/TextField'
 import Style from '../styles'
 
 class StringField extends Component {
+  handleFieldChange(event) {
+    this.props.input.onChange(event)
+    if (this.props.hasOwnProperty('handleChange')) {
+      this.props.handleChange(event)
+    }
+  }
+
   render() {
     const { input, floatingLabel, meta: { touched, error }, ...custom } = this.props
     return (
       <TextField hintText={ floatingLabel }
+        { ...input }
+        onChange={ (event) => this.handleFieldChange(event) }
         floatingLabelText={ floatingLabel }
         className={ custom.className }
         disabled={ custom.disabled }
@@ -16,7 +25,6 @@ class StringField extends Component {
         floatingLabelStyle={ Style.floatingLabel }
         underlineFocusStyle={ Style.underlineFocus }
         multiLine={ custom.multiLine }
-        { ...input }
         { ...custom } />
     )
   }
@@ -36,6 +44,8 @@ StringField.propTypes = {
   multiLine: PropTypes.bool,
   underlineShow: PropTypes.bool,
   field_type: PropTypes.string,
+  onChange: PropTypes.func,
+  handleChange: PropTypes.func,
   references: PropTypes.func
 }
 

@@ -41,13 +41,13 @@ class LineItemComponent extends Component {
     this.props.dispatch(loadVendorAddress(vendorId))
   }
 
-  calculateTotalPrice(val) {
-    console.log('event .. ', val)
-    //this.props.dispatch(calculateTotalPriceForLineItem(price, quantity))
+  calculateTotalPrice(event) {
+    const data = this.props.data || {}
+    const value = data.active == 'quantity' ? data.values.material.price : data.values.quantity
+    this.props.dispatch(calculateTotalPriceForLineItem(event.target.value, value))
   }
 
   render() {
-    const data = this.props.data || {}
     const { handleSubmit } = this.props
     return (
       <div className="col-1-1">
@@ -56,14 +56,13 @@ class LineItemComponent extends Component {
             <div className="col-1-4">
               <Field { ...newLineItem.plant } component={ InputField }
                 dataSource={ this.props.references.plants }
-                onChange={ (event, i, value) => this.handlePlantChange(value) } data={ data.plant } />
+                onChange={ (event, i, value) => this.handlePlantChange(value) } />
             </div>
             <div className="col-1-4">
-              <Field { ...newLineItem.business_unit } component={ InputField } dataSource={ this.props.references.business_units }
-                data={ data.business_unit } />
+              <Field { ...newLineItem.business_unit } component={ InputField } dataSource={ this.props.references.business_units } />
             </div>
             <div className="col-1-4">
-              <Field { ...newLineItem.expected_deliver_date } component={ InputField } data={ data.expected_deliver_date } />
+              <Field { ...newLineItem.expected_deliver_date } component={ InputField } />
             </div>
             <div className="col-1-1">
               <div className="col-1-4">
@@ -81,11 +80,11 @@ class LineItemComponent extends Component {
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.quantity } component={ InputField }
-                  onChange={ (event, value) => this.calculateTotalPrice(event) } />
+                  handleChange={ (event) => this.calculateTotalPrice(event) } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.material.price } component={ InputField }
-                  onChange={ (event, value) => this.calculateTotalPrice(value) } />
+                  handleChange={ (event) => this.calculateTotalPrice(event) } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.currency } component={ InputField }
@@ -120,12 +119,20 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.accounting.assignment_category } component={ InputField } />
               </div>
             </section>
-            <div className="col-1-1">
-              <Field { ...newLineItem.notes } component={ InputField } />
-            </div>
-            <div className="col-1-1">
-              <Field { ...newLineItem.notes } component={ InputField } />
-            </div>
+            <section className="col-1-1" style={ section.wrapper }>
+              <div className="col-1-3">
+                <Field { ...newLineItem.noteTypes } component={ InputField } name="internalNoteType" floatingLabel="Note types" disabled="true" />
+              </div>
+              <div className="col-7-12">
+                <Field { ...newLineItem.notes } component={ InputField } name="internalnotes" floatingLabel="Notes" />
+              </div>
+              <div className="col-1-3">
+                <Field { ...newLineItem.noteTypes } component={ InputField } name="externalNoteType" floatingLabel="Note types" disabled="true" />
+              </div>
+              <div className="col-7-12">
+                <Field { ...newLineItem.notes } component={ InputField } name="externalnotes" floatingLabel="Notes" />
+              </div>
+            </section>
           </form>
         </Paper>
       </div>
@@ -137,7 +144,9 @@ LineItemComponent.propTypes = {
   references: PropTypes.object,
   data: PropTypes.object,
   dispatch: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  name: PropTypes.string,
+  floatingLabel: PropTypes.string
 }
 
 export default reduxForm({
