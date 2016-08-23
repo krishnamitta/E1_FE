@@ -15,9 +15,13 @@ export const loadMaterialDetails = (material) => {
 }
 
 export const loadVendorAddress = (vendorId) => {
+  const queryParameters = { vendor: `'${vendorId}'` }
+  const url = buildURI(config.services.vendor.address, queryParameters)
+  return dispatchAction(url, PR.LOAD_VENDOR_ADDRESS)
+}
+
+export const calculateTotalPriceForLineItem = (price, quantity) => {
   return (dispatch) => {
-    const queryParameters = { vendor: `'${vendorId}'` }
-    const url = buildURI(config.services.vendor.address, queryParameters)
-    return dispatchAction(url, PR.LOAD_VENDOR_ADDRESS)
+    dispatch({ type: PR.LINE_ITEM.CALCULATE_TOTAL_PRICE_FOR_LINEITEM, data: (price * quantity) })
   }
 }

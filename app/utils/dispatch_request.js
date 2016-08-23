@@ -12,10 +12,10 @@ export const buildURI = (resourceURI, queryParameters = {}) => {
 }
 
 export const dispatchAction = (url, actionType) => {
-  console.log('actionType..', actionType)
   return (dispatch) => {
     axios.get(url).then((response) => {
-      dispatch({ type: actionType, data: response.data.d.results })
+      const data = response.data.d.results ? response.data.d.results : response.data.d
+      dispatch({ type: actionType, data })
     }).catch((error) => {
       dispatch({ type: actionType, data: [] })
     })
