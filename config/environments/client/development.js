@@ -8,11 +8,11 @@ module.exports = {
       plantList: "/PlantMaster?sap-client=300?locale='E'&$format=json",
       currencyList: "/CurrencyMaster?locale='E'&sap-client=300&$format=json",
       materialList: "/MaterialMaster?locale='E'&materialtype='ZAWA'&sap-client=300&$format=json",
-      materialGroupList: "/MatGrpMaster?locale='E'&$format=json",
+      materialGroupList: "/MatGrpMaster?sap-client=300&locale='E'&$format=json",
       businessUnitList: "/CostCenterMaster?locale='E'&sap-client=300&$format=json"
     },
     vendor: {
-      address: '/VendAddress?$format=json'
+      address: '/VendAddress?sap-client=300&$format=json'
     }
   }
 }

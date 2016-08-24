@@ -13,11 +13,6 @@ const DashboardComponent = () => {
           <Tile label="Purchase Requisition" icon={ <ContentAddCircle color="#FFFFFF" style={ styles.addIcon } /> } />
         </Link>
       </div>
-      <div className="col-1-5">
-        <Link to="/purchase_requisitions/new">
-          <Tile label="Purchase Order" icon={ <ContentAddCircle color="#FFFFFF" style={ styles.addIcon } /> } />
-        </Link>
-      </div>
     </div>
 
   )

@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import InputField from '../../../common/input_field'
-import newLineItem from './form_fields/new_line_item'
+import newLineItem from './utils/form_fields'
 import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress, calculateTotalPriceForLineItem } from '../actions'
 import { fetchMaterialList, loadReferenceData } from '../../../reference_data/actions'
 import Paper from 'material-ui/Paper'
-import validate from './form_fields/line_item_validations'
+import validate from './utils/line_item_validations'
 import AddressComponent from '../../../address/components'
 
 const section = {
