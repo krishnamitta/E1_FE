@@ -8,8 +8,8 @@ import { connect } from 'react-redux'
 import NewLineItem from '../line_item/components/new_line_item'
 
 const customContentStyle = {
-  width: '90%',
-  maxWidth: '100%',
+  width: '95%',
+  maxWidth: 'none',
 }
 
 class LineItemBtn extends Component {
@@ -45,12 +45,13 @@ class LineItemBtn extends Component {
         <Dialog
           title="Add Line Item"
           style={ Object.assign({}, styles.formHeader, styles.font20) }
-          autoScrollBodyContent={ true }
           titleStyle={ styles.dialogTitleStyle }
           contentStyle={ customContentStyle }
           open={ this.state.open }
           onRequestClose={ this.handleClose }
           modal={ false }
+          autoDetectWindowHeight
+          autoScrollBodyContent
           actions={ actions }>
           <NewLineItem { ...this.props } />
         </Dialog>
