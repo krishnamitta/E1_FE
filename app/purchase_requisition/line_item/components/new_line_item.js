@@ -51,8 +51,8 @@ class LineItemComponent extends Component {
     const { handleSubmit } = this.props
     return (
       <div className="col-1-1">
-        <Paper className="line_item_form">
-          <form className="lineItemForm" onSubmit={ handleSubmit }>
+        <form ref="lineItemForm" onSubmit={ (event) => handleSubmit(this.props.onSubmit) }>
+          <Paper className="line_item_form">
             <div className="col-1-4">
               <Field { ...newLineItem.plant } component={ InputField }
                 dataSource={ this.props.references.plants }
@@ -133,8 +133,8 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.notes } component={ InputField } name="externalnotes" floatingLabel="Notes" />
               </div>
             </section>
-          </form>
-        </Paper>
+          </Paper>
+        </form>
       </div>
     )
   }
@@ -143,6 +143,7 @@ class LineItemComponent extends Component {
 LineItemComponent.propTypes = {
   references: PropTypes.object,
   data: PropTypes.object,
+  onSubmit: PropTypes.func,
   dispatch: PropTypes.func,
   handleSubmit: PropTypes.func,
   name: PropTypes.string,

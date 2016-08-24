@@ -28,19 +28,18 @@ export default {
     name: 'totalPrice',
     floatingLabel: 'Total Value',
     type: 'string',
-    required: true,
     disabled: true
   },
   currency: {
     name: 'currency',
     floatingLabel: 'Currency',
-    type: 'autocomplete',
-    required: true
+    type: 'autocomplete'
   },
   quantity: {
     name: 'quantity',
     floatingLabel: 'Quantity',
     type: 'string',
+    fieldType: 'number',
     required: true
   },
   notes: {
@@ -111,6 +110,9 @@ export default {
       disabled: true
     }
   },
+  material_exists: {
+    name: 'material_exists'
+  },
   material: {
     name: {
       name: 'material.name',
@@ -134,6 +136,7 @@ export default {
       name: 'material.price',
       floatingLabel: 'Price',
       type: 'string',
+      fieldType: 'decimal',
       required: true
     },
     uom: {

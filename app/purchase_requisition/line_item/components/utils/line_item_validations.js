@@ -7,10 +7,10 @@ const isDecimal = (value) => {
 const validate = (values) => {
   const errors = {}
   _.forOwn(lineItemFields, (field, key) => {
-    if (field.required && (_.isUndefined(values[field]) || _.isNull(values[field]))) {
+    if (field.required && (_.isUndefined(values[field.name]) || _.isNull(values[field.name]))) {
       errors[field.name] = `${field.floatingLabel} is required`
     }
-    if (field.fieldType == 'decimal' && isDecimal(values[field])) {
+    if (field.fieldType == 'decimal' && !isDecimal(values[field.name])) {
       errors[field.name] = 'Must be a valid decimal'
     }
   })

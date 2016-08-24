@@ -26,7 +26,7 @@ class LineItemBtn extends Component {
     this.setState({ open: false })
   }
 
-  submitLineItem(event) {
+  handleSubmit(event) {
     this.props.dispatch(addLineItemAction(this.props.lineItem))
     this.closeDialog()
   }
@@ -36,9 +36,8 @@ class LineItemBtn extends Component {
       <span style={ { marginRight: 5 } }>
         <FlatButton label="Cancel" onTouchTap={ (event) => this.closeDialog() } />
       </span>,
-      <FlatButton label="Submit" onTouchTap={ (event) => this.submitLineItem(event) } keyboardFocused={ true } />,
+      <FlatButton label="Submit" onTouchTap={ (event) => this.refs.lineItemForm.submit() } keyboardFocused={ true } />,
     ]
-
     return (
       <div>
         <RaisedButton label="Add line item" primary={ true } onTouchTap={ (event) => this.openDialog() } />
@@ -53,7 +52,7 @@ class LineItemBtn extends Component {
           autoDetectWindowHeight
           autoScrollBodyContent
           actions={ actions }>
-          <NewLineItem { ...this.props } />
+          <NewLineItem { ...this.props } ref="lineItemForm" onSubmit={ (event) => this.handleSubmit(event) } />
         </Dialog>
       </div>
     )
@@ -63,7 +62,8 @@ class LineItemBtn extends Component {
 
 LineItemBtn.propTypes = {
   lineItem: PropTypes.object,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  onSubmit: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
