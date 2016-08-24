@@ -35,6 +35,10 @@ class NewPRComponent extends Component {
     )
   }
 
+  headerStripContent() {
+    return this.itemCount() > 0 ? `Items - ${this.itemCount()}` : 'Items'
+  }
+
   render() {
     return (
       <div className="col-1-1">
@@ -46,17 +50,17 @@ class NewPRComponent extends Component {
           <div>
             <Field { ...newPR.notes } component={ InputField } />
           </div>
-          <div className="col-1-1" style={ Object.assign({}, { marginTop: 20 }, styles.headerBackground) }>
-            <div className="col-1-12" style={ styles.header }>
-              <h3 style={ Object.assign({}, styles.formHeader, styles.innerHeader) }>Items - { this.itemCount() }</h3>
-            </div>
-            <div className="col-11-12" style={ { padding: '5px 0', textAlign: 'right' } }>
-              <span>
-                { this.renderAddLineItemBtn() }
-              </span>
-            </div>
-          </div>
         </form>
+        <div className="col-1-1" style={ Object.assign({}, { marginTop: 10 }, styles.headerBackground) }>
+          <div className="col-1-12" style={ styles.header }>
+            <h3 style={ Object.assign({}, styles.formHeader, styles.innerHeader) }>{ this.headerStripContent() }</h3>
+          </div>
+          <div className="col-11-12" style={ { padding: '5px 0', textAlign: 'right' } }>
+            <span>
+              { this.renderAddLineItemBtn() }
+            </span>
+          </div>
+        </div>
         <section className="col-1-1">
           { this.itemCount() > 0 ? <LineItemList line_items={ this.props.data.line_items } /> : this.noLineItems() }
         </section>

@@ -5,11 +5,9 @@ import styles from '../styles'
 
 const Tile = (props) => {
   return (
-    <Paper style={ styles.tile.wrapper }>
+    <Paper style={ styles.tile.wrapper } zDepth={ 2 }>
       <h1 style={ styles.tile.header }>{ props.label }</h1>
-      <div style={ { position: 'relative' } }>
-        { props.icon }
-      </div>
+      <div style={ { position: 'relative' } }>{ props.icon }</div>
     </Paper>
   )
 }

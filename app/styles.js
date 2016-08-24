@@ -33,9 +33,7 @@ export default {
     height: '60px'
   },
   logo: {
-    position: 'relative',
-    top: '8px',
-    width: '110px'
+    position: 'relative'
   },
   employeeProfile: {
     position: 'relative',
@@ -71,7 +69,7 @@ export default {
     textTransform: 'capitalize',
     fontFamily,
     fontSize: 17,
-    color: 'rgb(112, 110, 110)',
+    color: '#333',
     marginTop: 0,
     marginBottom: 0,
     fontWeight: 500
@@ -118,7 +116,9 @@ export default {
   },
   tile: {
     wrapper: {
-      height: '200px',
+      height: 200,
+      width: 200,
+      padding: 5,
       textAlign: 'center',
       color: 'white',
       backgroundColor: '#4776E6'
@@ -127,14 +127,16 @@ export default {
       textTransform: 'uppercase',
       fontSize: 16,
       padding: '10px 0'
+    },
+    icon: {
+      width: 36,
+      height: 36,
+      position: 'absolute',
+      fontSize: 60,
+      top: 68,
+      display: 'block',
+      right: 5
     }
-  },
-  addIcon: {
-    width: 36,
-    height: 36,
-    position: 'absolute',
-    top: 105,
-    right: 5
   },
   line_item: {
     innerHeader: {

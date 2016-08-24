@@ -8,9 +8,9 @@ import styles from '../../styles'
 const DashboardComponent = () => {
   return (
     <div className="col-1-1">
-      <div className="col-1-5">
+      <div className="col-1-6">
         <Link to="/purchase_requisitions/new">
-          <Tile label="Purchase Requisition" icon={ <ContentAddCircle color="#FFFFFF" style={ styles.addIcon } /> } />
+          <Tile label="Purchase Requisition" icon={ <ContentAddCircle color="#FFFFFF" style={ styles.tile.icon } /> } />
         </Link>
       </div>
     </div>
