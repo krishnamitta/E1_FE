@@ -51,7 +51,7 @@ export default {
   },
   floatingLabel: {
     color: backgroundColor,
-    top: '30px',
+    top: '38px',
     width: '180%',
     fontSize
   },
