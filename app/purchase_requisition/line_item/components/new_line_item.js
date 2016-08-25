@@ -50,7 +50,7 @@ class LineItemComponent extends Component {
   render() {
     const { handleSubmit } = this.props
     return (
-      <div className="col-1-1">
+      <div className="col-1-1" style={ { overflow: 'hidden' } }>
         <form ref="lineItemForm" onSubmit={ (event) => handleSubmit(this.props.onSubmit) }>
           <Paper className="line_item_form">
             <div className="col-1-4">
