@@ -142,7 +142,6 @@ export default {
     name: 'material_uom',
     floatingLabel: 'UOM',
     type: 'string',
-    required: true,
     disabled: true
   },
   accounting: {
