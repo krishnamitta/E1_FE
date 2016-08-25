@@ -4,7 +4,7 @@ import Style from '../styles'
 
 class StringField extends Component {
   handleFieldChange(event) {
-    this.props.input.onChange(event)
+    this.props.input.onBlur(event)
     if (this.props.hasOwnProperty('handleChange')) {
       this.props.handleChange(event)
     }
@@ -15,7 +15,7 @@ class StringField extends Component {
     return (
       <TextField hintText={ custom.hintText }
         { ...input }
-        onChange={ (event) => this.handleFieldChange(event) }
+        onBlur={ (event) => this.handleFieldChange(event) }
         floatingLabelText={ floatingLabel }
         className={ custom.className }
         disabled={ custom.disabled }

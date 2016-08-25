@@ -28,23 +28,24 @@ class LineItemComponent extends Component {
   }
 
   handlePlantChange(plantId) {
-    this.props.dispatch((loadMaterialDetails({}))) // clear existing material
     this.props.dispatch(fetchMaterialList(plantId))
     this.props.dispatch(fetchShipToAddress(this.findPlantById(plantId)))
   }
 
   handleMaterialChange(materialId) {
     this.props.dispatch(loadMaterialDetails(this.findMaterialById(materialId)))
+    setTimeout(this.calculateTotalPrice(), 1000)
   }
 
   handleVendorChange(vendorId) {
     this.props.dispatch(loadVendorAddress(vendorId))
   }
 
-  calculateTotalPrice(event) {
-    const data = this.props.data || {}
-    const value = data.active == 'quantity' ? data.values.material.price : data.values.quantity
-    this.props.dispatch(calculateTotalPriceForLineItem(event.target.value, value))
+  calculateTotalPrice() {
+    const lineItem = this.props.lineItem || {}
+    const price = Number(lineItem.price) || 0
+    const quantity = Number(lineItem.quantity) || 0
+    this.props.dispatch(calculateTotalPriceForLineItem(price, quantity))
   }
 
   render() {
@@ -66,25 +67,25 @@ class LineItemComponent extends Component {
             </div>
             <div className="col-1-1">
               <div className="col-1-4">
-                <Field { ...newLineItem.material.name } dataSource={ this.props.references.materials }
+                <Field { ...newLineItem.material_name } dataSource={ this.props.references.materials }
                   component={ InputField } onChange={ (event, i, value) => this.handleMaterialChange(value) } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.material.description } component={ InputField } />
+                <Field { ...newLineItem.material_description } component={ InputField } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.material.group } component={ InputField } dataSource={ this.props.references.material_groups } />
+                <Field { ...newLineItem.material_group } component={ InputField } dataSource={ this.props.references.material_groups } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.material.uom } component={ InputField } />
+                <Field { ...newLineItem.material_uom } component={ InputField } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.quantity } component={ InputField }
-                  handleChange={ (event) => this.calculateTotalPrice(event) } />
+                  handleChange={ (event) => this.calculateTotalPrice() } />
               </div>
               <div className="col-1-4">
-                <Field { ...newLineItem.material.price } component={ InputField }
-                  handleChange={ (event) => this.calculateTotalPrice(event) } />
+                <Field { ...newLineItem.price } component={ InputField }
+                  handleChange={ (event) => this.calculateTotalPrice() } />
               </div>
               <div className="col-1-4">
                 <Field { ...newLineItem.currency } component={ InputField }
@@ -98,12 +99,12 @@ class LineItemComponent extends Component {
             <div className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Vendor</h5>
               <div className="col-1-4">
-                <Field { ...newLineItem.vendor.name } component={ InputField }
+                <Field { ...newLineItem.vendor_name } component={ InputField }
                   onChange={ (event, i, value) => this.handleVendorChange(value) }
                   dataSource={ this.props.references.vendors } />
               </div>
               <div className="col-1-5">
-                <Field { ...newLineItem.vendor.material_number } component={ InputField } />
+                <Field { ...newLineItem.vendor_material_number } component={ InputField } />
               </div>
               <div className="col-1-5">
                 <Field { ...newLineItem.part_number } component={ InputField } />
@@ -119,18 +120,20 @@ class LineItemComponent extends Component {
                 <Field { ...newLineItem.accounting.assignment_category } component={ InputField } />
               </div>
             </section>
-            <section className="col-1-1" style={ section.wrapper }>
-              <div className="col-1-3">
-                <Field { ...newLineItem.noteTypes } component={ InputField } name="internalNoteType" floatingLabel="Note types" disabled="true" />
+            <section className="col-1-1">
+              <div className="col-1-12">
+                <label style={ { fontSize: 12, position: 'relative', top: 15 } }>Internal Note</label>
               </div>
-              <div className="col-7-12">
-                <Field { ...newLineItem.notes } component={ InputField } name="internalnotes" floatingLabel="Notes" />
+              <div className="col-11-12">
+                <Field { ...newLineItem.internal_note } component={ InputField } />
               </div>
-              <div className="col-1-3">
-                <Field { ...newLineItem.noteTypes } component={ InputField } name="externalNoteType" floatingLabel="Note types" disabled="true" />
+            </section>
+            <section className="col-1-1">
+              <div className="col-1-12">
+                <label style={ { fontSize: 12, position: 'relative', top: 15 } }>External Note</label>
               </div>
-              <div className="col-7-12">
-                <Field { ...newLineItem.notes } component={ InputField } name="externalnotes" floatingLabel="Notes" />
+              <div className="col-11-12">
+                <Field { ...newLineItem.external_note } component={ InputField } />
               </div>
             </section>
           </Paper>
@@ -142,7 +145,7 @@ class LineItemComponent extends Component {
 
 LineItemComponent.propTypes = {
   references: PropTypes.object,
-  data: PropTypes.object,
+  lineItem: PropTypes.object,
   onSubmit: PropTypes.func,
   dispatch: PropTypes.func,
   handleSubmit: PropTypes.func,

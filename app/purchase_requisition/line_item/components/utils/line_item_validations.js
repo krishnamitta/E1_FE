@@ -1,7 +1,7 @@
 import lineItemFields from './form_fields'
 
 const isDecimal = (value) => {
-  return /^\d{0,2}(\.\d{1,2})?$/.test(value)
+  return /^(\-|\+)?([0-9]+(\.[0-9]+)?)$/.test(value)
 }
 
 const validate = (values) => {

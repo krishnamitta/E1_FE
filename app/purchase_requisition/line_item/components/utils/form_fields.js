@@ -24,6 +24,13 @@ export default {
     floatingLabel: 'Pruchasing Organization',
     type: 'string'
   },
+  price: {
+    name: 'price',
+    floatingLabel: 'Price',
+    type: 'string',
+    fieldType: 'decimal',
+    required: true
+  },
   total_price: {
     name: 'totalPrice',
     floatingLabel: 'Total Value',
@@ -33,7 +40,8 @@ export default {
   currency: {
     name: 'currency',
     floatingLabel: 'Currency',
-    type: 'autocomplete'
+    type: 'dropdown',
+    required: true
   },
   quantity: {
     name: 'quantity',
@@ -42,21 +50,23 @@ export default {
     fieldType: 'number',
     required: true
   },
-  notes: {
+  internal_note: {
+    name: 'internalNote',
+    hintText: 'Internal Note',
     type: 'string',
-    multiLine: true,
-    required: false
+    multiLine: true
   },
-  noteTypes: {
-    type: 'dropdown',
-    multiLine: true,
-    required: false,
-    dataSource: [{ code: '1', description: 'Internal' }, { code: '2', description: 'External' }]
+  external_note: {
+    name: 'externalNote',
+    hintText: 'External Note',
+    type: 'string',
+    multiLine: true
   },
   expected_deliver_date: {
     name: 'expected_delivery_date',
     floatingLabel: 'Expected Delivery Date',
-    type: 'date'
+    type: 'date',
+    required: true
   },
   ship_to_address: {
     street: {
@@ -90,62 +100,45 @@ export default {
       disabled: true
     }
   },
-  vendor: {
-    name: {
-      name: 'vendor.name',
-      floatingLabel: 'Vendor Name',
-      type: 'dropdown',
-      dataSource: [{ code: '1', description: 'Vendor 1' }, { code: '2', description: 'Vendor 2' }],
-      required: true
-    },
-    material_number: {
-      name: 'vendor.material_number',
-      floatingLabel: 'Vendor Material Number',
-      type: 'string'
-    },
-    address: {
-      name: 'vendor.address',
-      floatingLabel: 'Vendor Address',
-      type: 'string',
-      disabled: true
-    }
+  vendor_name: {
+    name: 'vendor.name',
+    floatingLabel: 'Vendor Name',
+    type: 'dropdown',
+    dataSource: [{ code: '1', description: 'Vendor 1' }, { code: '2', description: 'Vendor 2' }],
+    required: true
+  },
+  vendor_material_number: {
+    name: 'vendor.material_number',
+    floatingLabel: 'Vendor Material Number',
+    type: 'string'
   },
   material_exists: {
     name: 'material_exists'
   },
-  material: {
-    name: {
-      name: 'material.name',
-      floatingLabel: 'Item/Service',
-      type: 'dropdown',
-      label: 'material',
-      valueField: 'material'
-    },
-    description: {
-      name: 'material.description',
-      floatingLabel: 'Item Description',
-      type: 'string',
-      disabled: true
-    },
-    group: {
-      name: 'material.group',
-      floatingLabel: 'Material Group',
-      type: 'dropdown'
-    },
-    price: {
-      name: 'material.price',
-      floatingLabel: 'Price',
-      type: 'string',
-      fieldType: 'decimal',
-      required: true
-    },
-    uom: {
-      name: 'material.uom',
-      floatingLabel: 'UOM',
-      type: 'string',
-      required: true,
-      disabled: true
-    }
+  material_name: {
+    name: 'material.name',
+    floatingLabel: 'Item/Service',
+    type: 'dropdown',
+    label: 'material',
+    valueField: 'material'
+  },
+  material_description: {
+    name: 'material.description',
+    floatingLabel: 'Item Description',
+    type: 'string',
+    disabled: true
+  },
+  material_group: {
+    name: 'material.group',
+    floatingLabel: 'Material Group',
+    type: 'dropdown'
+  },
+  material_uom: {
+    name: 'material.uom',
+    floatingLabel: 'UOM',
+    type: 'string',
+    required: true,
+    disabled: true
   },
   accounting: {
     distribution: {
