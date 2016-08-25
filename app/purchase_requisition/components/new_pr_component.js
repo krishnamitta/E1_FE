@@ -44,10 +44,10 @@ class NewPRComponent extends Component {
       <div className="col-1-1">
         <form>
           <h2 className="col-1-1" style={ styles.formHeader }>New Purchase Requisition</h2>
-          <div>
+          <div className="col-3-12">
             <Field { ...newPR.title } component={ InputField } />
           </div>
-          <div>
+          <div className="col-9-12">
             <Field { ...newPR.notes } component={ InputField } />
           </div>
         </form>
