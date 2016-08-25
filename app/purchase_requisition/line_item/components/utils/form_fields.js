@@ -17,7 +17,8 @@ export default {
   part_number: {
     name: 'manufacturer_part_number',
     floatingLabel: 'Manufacturer Part Number',
-    type: 'string'
+    type: 'string',
+    maxValueLength: 18
   },
   purchasing_organization: {
     name: 'purchasing_organization',
@@ -29,7 +30,8 @@ export default {
     floatingLabel: 'Price',
     type: 'string',
     fieldType: 'decimal',
-    required: true
+    required: true,
+    expression: /^\d{1,11}(\.\d{0,2})?$/
   },
   total_price: {
     name: 'totalPrice',
@@ -47,8 +49,9 @@ export default {
     name: 'quantity',
     floatingLabel: 'Quantity',
     type: 'string',
-    fieldType: 'number',
-    required: true
+    fieldType: 'decimal',
+    required: true,
+    expression: /^\d{1,13}(\.\d{0,3})?$/
   },
   internal_note: {
     name: 'internalNote',
@@ -60,7 +63,8 @@ export default {
     name: 'externalNote',
     hintText: 'External Note',
     type: 'string',
-    multiLine: true
+    multiLine: true,
+    maxValueLength: 255
   },
   expected_deliver_date: {
     name: 'expected_delivery_date',
@@ -70,71 +74,72 @@ export default {
   },
   ship_to_address: {
     street: {
-      name: 'shipToAddress.street',
+      name: 'shipToAddress_street',
       floatingLabel: 'Street',
       type: 'string',
       disabled: true
     },
     city: {
-      name: 'shipToAddress.city',
+      name: 'shipToAddress_city',
       floatingLabel: 'City',
       type: 'string',
       disabled: true
     },
     zip: {
-      name: 'shipToAddress.postalCode',
+      name: 'shipToAddress_postalCode',
       floatingLabel: 'Postal Code',
       type: 'string',
       disabled: true
     },
     country: {
-      name: 'shipToAddress.country',
+      name: 'shipToAddress_country',
       floatingLabel: 'Country',
       type: 'string',
       disabled: true
     },
     state: {
-      name: 'shipToAddress.region',
+      name: 'shipToAddress_region',
       floatingLabel: 'State',
       type: 'string',
       disabled: true
     }
   },
   vendor_name: {
-    name: 'vendor.name',
+    name: 'vendor_name',
     floatingLabel: 'Vendor Name',
     type: 'dropdown',
     dataSource: [{ code: '1', description: 'Vendor 1' }, { code: '2', description: 'Vendor 2' }],
     required: true
   },
   vendor_material_number: {
-    name: 'vendor.material_number',
+    name: 'vendor_material_number',
     floatingLabel: 'Vendor Material Number',
-    type: 'string'
+    type: 'string',
+    maxValueLength: 35
   },
   material_exists: {
     name: 'material_exists'
   },
   material_name: {
-    name: 'material.name',
+    name: 'material_name',
     floatingLabel: 'Item/Service',
     type: 'dropdown',
     label: 'material',
     valueField: 'material'
   },
   material_description: {
-    name: 'material.description',
+    name: 'material_description',
     floatingLabel: 'Item Description',
     type: 'string',
     disabled: true
   },
   material_group: {
-    name: 'material.group',
+    name: 'material_group',
     floatingLabel: 'Material Group',
     type: 'dropdown'
   },
   material_uom: {
-    name: 'material.uom',
+    name: 'material_uom',
     floatingLabel: 'UOM',
     type: 'string',
     required: true,
