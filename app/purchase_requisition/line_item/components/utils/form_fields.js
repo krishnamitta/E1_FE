@@ -124,8 +124,9 @@ export default {
     name: 'material_name',
     floatingLabel: 'Item/Service',
     type: 'dropdown',
-    label: 'material',
-    valueField: 'material'
+    label: 'materialdesc',
+    valueField: 'material',
+    customDisplay: true
   },
   material_description: {
     name: 'material_description',

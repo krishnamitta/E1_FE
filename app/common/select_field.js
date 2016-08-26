@@ -5,8 +5,9 @@ import Style from '../styles'
 
 export default class SDropdown extends Component {
   renderMenuItem(item, index) {
+    const result = this.props.customDisplay ? `${item[this.props.valueField]} - ${item[this.props.label]}` : item[this.props.label]
     return (
-      <MenuItem key={ index } value={ item[this.props.valueField] } primaryText={ item[this.props.label] } />
+      <MenuItem key={ index } value={ item[this.props.valueField] } primaryText={ result } />
     )
   }
 
@@ -47,7 +48,8 @@ SDropdown.propTypes = {
   dataSource: PropTypes.array,
   floatingLabel: PropTypes.string,
   onChange: PropTypes.func,
-  hintText: PropTypes.string
+  hintText: PropTypes.string,
+  customDisplay: PropTypes.bool
 }
 
 SDropdown.defaultProps = {
