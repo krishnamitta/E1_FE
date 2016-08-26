@@ -1,47 +1,43 @@
 import React, { Component, PropTypes } from 'react'
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
+import Griddle from 'griddle-react'
+import styles from '../../../styles'
+import LineItemBtn from '../../components/add_line_item'
+import ColumnMetaData from './ColumnMetaData'
 
-const headerStyle = {
-  fontWeight: 600, fontSize: 13
-}
+const NoDataComponent = () => (
+  <div style={ styles.no_items_message.wrapper }>
+    <div style={ styles.no_items_message.content }>
+      <h1>No Line Items Available!</h1>
+      <div style={ { textAlign: 'center' } }>
+        <LineItemBtn />
+      </div>
+    </div>
+  </div>
+)
+
 export default class LineItemList extends Component {
 
-  renderGridBody(lineItem, index) {
-    const material = lineItem.material || {}
-    return (
-      <TableRow key={ index }>
-        <TableRowColumn>{ lineItem.plant }</TableRowColumn>
-        <TableRowColumn>{ lineItem.business_unit }</TableRowColumn>
-        <TableRowColumn>{ material.name }</TableRowColumn>
-        <TableRowColumn>{ material.group }</TableRowColumn>
-        <TableRowColumn>{ lineItem.quantity }</TableRowColumn>
-        <TableRowColumn>{ lineItem.price }</TableRowColumn>
-        <TableRowColumn>{ lineItem.expected_deliver_date }</TableRowColumn>
-      </TableRow>
-    )
-  }
-
   render() {
+    const structuredItems = []
+    for (const item of this.props.line_items) {
+      structuredItems.push(
+        Object.assign({}, item, { materialGroup: item.material.group, materialName: item.material.name })
+      )
+    }
     return (
-      <div>
-        <div className="col-1-1">
-          <Table selectable={ true }>
-            <TableHeader displaySelectAll={ false } adjustForCheckbox={ true }>
-              <TableRow>
-                <TableHeaderColumn style={ headerStyle }><span>Plant</span></TableHeaderColumn>
-                <TableHeaderColumn style={ headerStyle }><span>Business Unit</span></TableHeaderColumn>
-                <TableHeaderColumn style={ headerStyle }><span>Material</span></TableHeaderColumn>
-                <TableHeaderColumn style={ headerStyle }><span>Material Group</span></TableHeaderColumn>
-                <TableHeaderColumn style={ headerStyle }><span>Quantity</span></TableHeaderColumn>
-                <TableHeaderColumn style={ headerStyle }><span>Price</span></TableHeaderColumn>
-                <TableHeaderColumn style={ headerStyle }><span>Expected Delivery Date</span></TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody showRowHover={ true } displayRowCheckbox={ true }>
-              { this.props.line_items.map((lineItem, index) => this.renderGridBody(lineItem, index)) }
-            </TableBody>
-          </Table>
-        </div>
+      <div className="col-1-1" style={ { marginTop: 10 } }>
+        <Griddle results={ structuredItems } columnMetadata={ ColumnMetaData }
+          tableClassName="table"
+          showFilter={ false }
+          useGriddleStyles={ false }
+          resultsPerPage={ 20 }
+          useFixedHeader
+          bodyHeight={ 450 }
+          enableInfiniteScroll={ true }
+          customNoDataComponent={ NoDataComponent }
+          sortAscendingComponent={ <span className="fa fa-sort-alpha-asc"></span> }
+          sortDescendingComponent={ <span className="fa fa-sort-alpha-desc"></span> }
+          columns={ ['plant', 'business_unit', 'materialName', 'materialGroup', 'quantity', 'price', 'expected_deliver_date'] } />
       </div>
     )
   }

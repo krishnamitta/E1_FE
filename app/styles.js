@@ -154,8 +154,6 @@ export default {
   no_items_message: {
     wrapper: {
       marginTop: 20,
-      border: '1px dotted #c1c1c1',
-      minHeight: '70%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
