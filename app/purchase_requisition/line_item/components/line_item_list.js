@@ -21,7 +21,7 @@ export default class LineItemList extends Component {
     const structuredItems = []
     for (const item of this.props.line_items) {
       structuredItems.push(
-        Object.assign({}, item, { materialGroup: item.material.group, materialName: item.material.name })
+        Object.assign({}, item, { materialGroup: item.material_group, materialName: item.material_name })
       )
     }
     return (
