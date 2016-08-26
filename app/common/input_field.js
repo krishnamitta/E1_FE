@@ -5,6 +5,7 @@ import EmailField from './email_field'
 import Dropdown from './select_field'
 import Autocomplete from './dropdown'
 import DateField from './date_field'
+import CheckboxField from './checkbox_field'
 
 const FieldMapper = {
   string: StringField,
@@ -12,7 +13,8 @@ const FieldMapper = {
   autocomplete: Autocomplete,
   number: DecimalField,
   email: EmailField,
-  date: DateField
+  date: DateField,
+  checkbox: CheckboxField
 }
 
 export default class InputField extends Component {

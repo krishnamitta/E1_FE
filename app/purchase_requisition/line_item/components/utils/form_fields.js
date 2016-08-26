@@ -55,6 +55,7 @@ export default {
   },
   internal_note: {
     name: 'internalNote',
+    floatingLabel: 'Internal Note',
     hintText: 'Internal Note',
     type: 'string',
     multiLine: true
@@ -62,6 +63,7 @@ export default {
   external_note: {
     name: 'externalNote',
     hintText: 'External Note',
+    floatingLabel: 'External Note',
     type: 'string',
     multiLine: true,
     maxValueLength: 255
@@ -120,6 +122,12 @@ export default {
   material_exists: {
     name: 'material_exists'
   },
+  material_not_found: {
+    name: 'material_not_found',
+    label: 'Item not found?',
+    type: 'checkbox',
+    labelPosition: 'right',
+  },
   material_name: {
     name: 'material_name',
     floatingLabel: 'Item/Service',
@@ -131,8 +139,7 @@ export default {
   material_description: {
     name: 'material_description',
     floatingLabel: 'Item Description',
-    type: 'string',
-    disabled: true
+    type: 'string'
   },
   material_group: {
     name: 'material_group',

@@ -6,6 +6,7 @@ import styles from '../../styles'
 import { addLineItemAction } from '../actions'
 import { connect } from 'react-redux'
 import NewLineItem from '../line_item/components/new_line_item'
+import { formValueSelector } from 'redux-form'
 
 const customContentStyle = {
   width: '95%',
@@ -65,11 +66,12 @@ LineItemBtn.propTypes = {
   dispatch: PropTypes.func,
   onSubmit: PropTypes.func
 }
-
+const selector = formValueSelector('LineItem')
 const mapStateToProps = (state) => {
+  const isItemPresent = selector(state, 'material_not_found')
   return {
+    isItemPresent,
     references: state.Referencedata,
-    data: state.form.LineItem,
     lineItem: (state.form.LineItem ? state.form.LineItem.values : {})
   }
 }

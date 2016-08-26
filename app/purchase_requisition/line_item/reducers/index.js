@@ -13,18 +13,25 @@ const buildAddress = (values, object, key) => {
   return Object.assign({}, values, address)
 }
 
-const addMaterialDetails = (materialValue, materialData) => {
-  const details = { description: materialData.materialdesc, uom: materialData.uom }
-  return Object.assign({}, materialValue, details)
-}
+// const addMaterialDetails = (materialValue, materialData) => {
+//   const details = { description: materialData.materialdesc, uom: materialData.uom }
+//   return Object.assign({}, materialValue, details)
+// }
 
 const copyFormValues = (values, materialData) => {
-  return Object.assign({}, values, { price: materialData.unitprice, material: addMaterialDetails(values.material, materialData) })
+  const material = {
+    price: materialData.unitprice,
+    material_description: materialData.materialdesc,
+    material_uom: materialData.uom,
+    material_name: materialData.material
+  }
+  return Object.assign({}, values, material)
 }
 
 const calculateTotalPrice = (values, totalPrice) => {
   return Object.assign({}, values, { totalPrice })
 }
+
 
 const LineItem = (state = {}, action) => {
   switch (action.type) {

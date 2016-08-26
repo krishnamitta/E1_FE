@@ -143,6 +143,14 @@ export default {
       marginTop: 10
     }
   },
+  checkBoxStyle: {
+    lineitemNotFound: {
+      fontSize: 12,
+    },
+    iconStyle: {
+      maxWidth: 15,
+    }
+  },
   no_items_message: {
     wrapper: {
       marginTop: 20,

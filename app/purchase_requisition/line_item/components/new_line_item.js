@@ -7,6 +7,7 @@ import { fetchMaterialList, loadReferenceData } from '../../../reference_data/ac
 import Paper from 'material-ui/Paper'
 import validate from './utils/line_item_validations'
 import AddressComponent from '../../../address/components'
+import styles from '../../../styles'
 
 const section = {
   wrapper: { paddingRight: 0, paddingTop: 5 },
@@ -47,7 +48,9 @@ class LineItemComponent extends Component {
     const quantity = Number(lineItem.quantity) || 0
     this.props.dispatch(calculateTotalPriceForLineItem(price, quantity))
   }
-
+  clearMaterialValue() {
+    this.props.dispatch(loadMaterialDetails({}))
+  }
   render() {
     const { handleSubmit } = this.props
     return (
@@ -60,38 +63,45 @@ class LineItemComponent extends Component {
                 onChange={ (event, i, value) => this.handlePlantChange(value) } />
             </div>
             <div className="col-1-4">
-              <Field { ...newLineItem.business_unit } component={ InputField } dataSource={ this.props.references.business_units } />
-            </div>
-            <div className="col-1-4">
               <Field { ...newLineItem.expected_deliver_date } component={ InputField } />
             </div>
+            <div className="col-1-4">
+              <Paper />
+            </div>
             <div className="col-1-1">
-              <div className="col-1-4">
-                <Field { ...newLineItem.material_name } dataSource={ this.props.references.materials }
-                  component={ InputField } onChange={ (event, i, value) => this.handleMaterialChange(value) } />
-              </div>
-              <div className="col-1-4">
-                <Field { ...newLineItem.material_description } component={ InputField } />
-              </div>
+              { this.props.isItemPresent ?
+                <div className="col-1-4">
+                  <Field { ...newLineItem.material_description } component={ InputField } />
+                </div> :
+                <div className="col-1-4">
+                  <Field { ...newLineItem.material_name } dataSource={ this.props.references.materials }
+                    component={ InputField } onChange={ (event, i, value) => this.handleMaterialChange(value) } />
+                </div> }
               <div className="col-1-4">
                 <Field { ...newLineItem.material_group } component={ InputField } dataSource={ this.props.references.material_groups } />
               </div>
-              <div className="col-1-4">
+              <div>
+                <Field { ...newLineItem.material_not_found } component={ InputField } style={ styles.checkBoxStyle.rootStyle }
+                  labelStyle={ Object.assign({}, styles.checkBoxStyle.lineitemNotFound) }
+                  iconStyle={ Object.assign({}, styles.checkBoxStyle.iconStyle) }
+                  handleOnCheck={ (event) => this.clearMaterialValue() } />
+              </div>
+              <div className="col-1-8">
                 <Field { ...newLineItem.material_uom } component={ InputField } />
               </div>
-              <div className="col-1-4">
+              <div className="col-1-8">
                 <Field { ...newLineItem.quantity } component={ InputField }
                   handleChange={ (event) => this.calculateTotalPrice() } />
               </div>
-              <div className="col-1-4">
-                <Field { ...newLineItem.price } component={ InputField }
-                  handleChange={ (event) => this.calculateTotalPrice() } />
-              </div>
-              <div className="col-1-4">
+              <div className="col-1-8">
                 <Field { ...newLineItem.currency } component={ InputField }
                   dataSource={ this.props.references.currencies } />
               </div>
-              <div className="col-1-4">
+              <div className="col-1-8">
+                <Field { ...newLineItem.price } component={ InputField }
+                  handleChange={ (event) => this.calculateTotalPrice() } />
+              </div>
+              <div className="col-1-8">
                 <Field { ...newLineItem.total_price } component={ InputField } />
               </div>
             </div>
@@ -114,6 +124,9 @@ class LineItemComponent extends Component {
             <section className="col-1-1" style={ section.wrapper }>
               <h5 style={ section.innerHeader }>Accounting</h5>
               <div className="col-1-4">
+                <Field { ...newLineItem.business_unit } component={ InputField } dataSource={ this.props.references.business_units } />
+              </div>
+              <div className="col-1-4">
                 <Field { ...newLineItem.accounting.distribution } component={ InputField } />
               </div>
               <div className="col-1-5">
@@ -121,18 +134,10 @@ class LineItemComponent extends Component {
               </div>
             </section>
             <section className="col-1-1">
-              <div className="col-1-12">
-                <label style={ { fontSize: 12, position: 'relative', top: 15 } }>Internal Note</label>
-              </div>
-              <div className="col-11-12">
+              <div className="col-1-2">
                 <Field { ...newLineItem.internal_note } component={ InputField } />
               </div>
-            </section>
-            <section className="col-1-1">
-              <div className="col-1-12">
-                <label style={ { fontSize: 12, position: 'relative', top: 15 } }>External Note</label>
-              </div>
-              <div className="col-11-12">
+              <div className="col-1-2">
                 <Field { ...newLineItem.external_note } component={ InputField } />
               </div>
             </section>
@@ -150,7 +155,8 @@ LineItemComponent.propTypes = {
   dispatch: PropTypes.func,
   handleSubmit: PropTypes.func,
   name: PropTypes.string,
-  floatingLabel: PropTypes.string
+  floatingLabel: PropTypes.string,
+  isItemPresent: PropTypes.bool
 }
 
 export default reduxForm({
