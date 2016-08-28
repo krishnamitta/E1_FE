@@ -18,15 +18,9 @@ const NoDataComponent = () => (
 export default class LineItemList extends Component {
 
   render() {
-    const structuredItems = []
-    for (const item of this.props.line_items) {
-      structuredItems.push(
-        Object.assign({}, item, { materialGroup: item.material_group, materialName: item.material_name })
-      )
-    }
     return (
       <div className="col-1-1" style={ { marginTop: 10 } }>
-        <Griddle results={ structuredItems } columnMetadata={ ColumnMetaData }
+        <Griddle results={ this.props.line_items } columnMetadata={ ColumnMetaData }
           tableClassName="table"
           showFilter={ false }
           useGriddleStyles={ false }
@@ -37,7 +31,7 @@ export default class LineItemList extends Component {
           customNoDataComponent={ NoDataComponent }
           sortAscendingComponent={ <span className="fa fa-sort-alpha-asc"></span> }
           sortDescendingComponent={ <span className="fa fa-sort-alpha-desc"></span> }
-          columns={ ['plant', 'business_unit', 'materialName', 'materialGroup', 'quantity', 'price', 'expected_deliver_date'] } />
+          columns={ ['plant', 'business_unit', 'material_name', 'material_group', 'quantity', 'price', 'expected_deliver_date'] } />
       </div>
     )
   }

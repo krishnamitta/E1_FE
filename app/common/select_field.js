@@ -30,7 +30,8 @@ export default class SDropdown extends Component {
           floatingLabelStyle={ Style.floatingLabel }
           underlineFocusStyle={ Style.underlineFocus }
           floatingLabelText={ this.props.floatingLabel }
-          hintText={ this.props.hintText }>
+          floatingLabelFixed
+          hintText={ this.props.floatingLabel }>
           { (this.props.dataSource && this.props.valueField && this.props.label) ? this.props.dataSource.map((item, index) => this.renderMenuItem(item, index)) : null }
         </SelectField>
       </div>

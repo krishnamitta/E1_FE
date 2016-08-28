@@ -9,12 +9,12 @@ export default [{
   locked: true,
   displayName: 'BUSINESS UNIT'
 }, {
-  columnName: 'materialName',
+  columnName: 'material_name',
   order: 3,
   locked: true,
   displayName: 'ITEM'
 }, {
-  columnName: 'materialGroup',
+  columnName: 'material_group',
   order: 4,
   locked: true,
   displayName: 'MATERIAL GROUP'
@@ -30,7 +30,7 @@ export default [{
   locked: true,
   displayName: 'PRICE'
 }, {
-  columnName: 'expected_deliver_date',
+  columnName: 'expected_delivery_date',
   order: 7,
   locked: true,
   displayName: 'DELIVERY DATE'

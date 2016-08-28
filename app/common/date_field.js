@@ -17,9 +17,10 @@ export default class DateField extends Component {
         floatingLabelText={ floatingLabel }
         formatDate={ this.formatDate }
         container="inline"
-        hintText={ custom.hintText }
+        hintText={ floatingLabel }
         errorText={ touched && error }
         floatingLabelStyle={ Style.floatingLabel }
+        floatingLabelFixed
         onBlur={ (event, date) => input.onBlur(event, date) }
         onChange={ (event, date) => input.onChange(date) }
         autoOk

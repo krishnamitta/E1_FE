@@ -13,7 +13,7 @@ class StringField extends Component {
   render() {
     const { input, floatingLabel, meta: { touched, error }, ...custom } = this.props
     return (
-      <TextField hintText={ custom.hintText }
+      <TextField hintText={ floatingLabel }
         { ...input }
         onBlur={ (event) => this.handleFieldChange(event) }
         floatingLabelText={ floatingLabel }
@@ -25,6 +25,7 @@ class StringField extends Component {
         floatingLabelStyle={ Style.floatingLabel }
         underlineFocusStyle={ Style.underlineFocus }
         multiLine={ custom.multiLine }
+        floatingLabelFixed
         { ...custom } />
     )
   }
