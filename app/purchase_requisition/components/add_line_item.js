@@ -1,17 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import styles from '../../styles'
 import { addLineItemAction } from '../actions'
 import { connect } from 'react-redux'
 import NewLineItem from '../line_item/components/new_line_item'
-import { formValueSelector } from 'redux-form'
+import ExitAppIcon from 'material-ui/svg-icons/action/exit-to-app'
+import { reset, formValueSelector } from 'redux-form'
 
 const customContentStyle = {
   width: '95%',
   maxWidth: 'none',
 }
+const LineItemForm = 'LineItem'
 
 class LineItemBtn extends Component {
   constructor(props) {
@@ -27,6 +28,14 @@ class LineItemBtn extends Component {
     this.setState({ open: false })
   }
 
+  /* TODO - Work in progress */
+  saveAndNewLineItem() {
+    if (this.props.lineItem) {
+      this.props.dispatch(addLineItemAction(this.props.lineItem))
+      this.props.dispatch(reset(LineItemForm))
+    }
+  }
+
   handleSubmit(event) {
     this.props.dispatch(addLineItemAction(this.props.lineItem))
     this.closeDialog()
@@ -35,9 +44,13 @@ class LineItemBtn extends Component {
   render() {
     const actions = [
       <span style={ { marginRight: 5 } }>
-        <FlatButton label="Cancel" onTouchTap={ (event) => this.closeDialog() } />
+        <RaisedButton label="Cancel" onTouchTap={ (event) => this.closeDialog() } />
       </span>,
-      <FlatButton label="Submit" onTouchTap={ (event) => this.refs.lineItemForm.submit() } keyboardFocused={ true } />,
+      <span style={ { marginRight: 5 } }>
+        <RaisedButton primary={ true } label="Save & Add New" onTouchTap={ (event) => this.saveAndNewLineItem() } />
+      </span>,
+      <RaisedButton secondary={ true } icon={ <ExitAppIcon /> } label="Save & Exit"
+        onTouchTap={ (event) => this.refs.lineItemForm.submit() } keyboardFocused={ true } />,
     ]
     return (
       <div>
@@ -67,7 +80,7 @@ LineItemBtn.propTypes = {
   dispatch: PropTypes.func,
   onSubmit: PropTypes.func
 }
-const selector = formValueSelector('LineItem')
+const selector = formValueSelector(LineItemForm)
 const mapStateToProps = (state) => {
   const isItemPresent = selector(state, 'material_not_found')
   return {
