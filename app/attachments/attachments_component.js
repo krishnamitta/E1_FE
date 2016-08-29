@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
+import FileUploadIcon from 'material-ui/svg-icons/file/file-upload'
 import AttachmentIcon from 'material-ui/svg-icons/file/attachment'
 import Paper from 'material-ui/Paper'
 import styles from './styles'
@@ -28,7 +29,7 @@ export default class AttachmentComponent extends Component {
           <section className="attachmentsList"></section>
           <section className="col-1-12" style={ { position: 'absolute', bottom: 10, right: 0 } }>
             <FloatingActionButton backgroundColor={ bgColor } mini={ true }>
-              <AttachmentIcon />
+              <FileUploadIcon />
             </FloatingActionButton>
           </section>
         </div>
