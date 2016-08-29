@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 import RaisedButton from 'material-ui/RaisedButton'
 import styles from '../../styles'
 import LineItemBtn from './add_line_item'
-import LineItemList from '../line_item/components/line_item_list'
+import LineItemGrid from '../line_item/components/lineItemGrid'
 import AttachmentComponent from '../../attachments/attachments_component'
 
 class NewPRComponent extends Component {
@@ -34,7 +34,7 @@ class NewPRComponent extends Component {
             <Field { ...newPR.notes } component={ InputField } />
           </div>
           { /* LineItem List */ }
-          <LineItemList line_items={ this.props.data.line_items } />
+          <LineItemGrid line_items={ this.props.data.line_items } />
           <div className="col-1-1" style={ { marginTop: 10, textAlign: 'right' } }>
             <span style={ { marginRight: 10 } }><RaisedButton backgroundColor="#c1c1c1" label="Route for Approval" /></span>
             <span><RaisedButton primary={ true } label="Submit" /></span>

@@ -45,6 +45,7 @@ class LineItemBtn extends Component {
         <Dialog
           title="Add Line Item"
           style={ Object.assign({}, styles.formHeader, styles.font20) }
+          bodyStyle={ { paddingRight: 0 } }
           titleStyle={ styles.dialogTitleStyle }
           contentStyle={ customContentStyle }
           open={ this.state.open }
