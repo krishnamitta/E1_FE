@@ -13,7 +13,7 @@ const validate = (values) => {
     if (field.fieldType == 'decimal' && !isDecimal(values[field.name])) {
       errors[field.name] = 'Must be a valid decimal'
     }
-    if (field.maxValueLength && values[field.name] && values[field.name] > field.maxValueLength) {
+    if (field.maxValueLength && values[field.name] && values[field.name].length > field.maxValueLength) {
       errors[field.name] = 'Max length exceeded'
     }
     if (field.fieldType == 'decimal' && field.expression && values[field.name] && !field.expression.test(values[field.name])) {

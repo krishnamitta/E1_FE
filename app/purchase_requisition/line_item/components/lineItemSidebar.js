@@ -11,7 +11,7 @@ import { grey400 } from 'material-ui/styles/colors'
 const color = 'rgb(7, 52, 116)'
 
 const style = {
-  container: { height: '100%', borderLeft: '1px solid #c1c1c1' },
+  container: { height: '65%', borderLeft: '1px solid #c1c1c1' },
   subheader: { backgroundColor: '#F1F1F1', padding: '0px 10px', color, fontSize: 15, marginTop: 1 }
 }
 

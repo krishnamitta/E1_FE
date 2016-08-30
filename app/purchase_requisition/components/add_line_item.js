@@ -41,6 +41,7 @@ class LineItemBtn extends Component {
     this.closeDialog()
   }
 
+
   render() {
     const actions = [
       <span style={ { marginRight: 5 } }>

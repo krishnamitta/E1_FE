@@ -25,13 +25,12 @@ export default class LineItemList extends Component {
           showFilter={ false }
           useGriddleStyles={ false }
           resultsPerPage={ 20 }
-          useFixedHeader
           bodyHeight={ 450 }
           enableInfiniteScroll={ true }
           customNoDataComponent={ NoDataComponent }
           sortAscendingComponent={ <span className="fa fa-sort-alpha-asc"></span> }
           sortDescendingComponent={ <span className="fa fa-sort-alpha-desc"></span> }
-          columns={ ['plant', 'business_unit', 'material_name', 'material_group', 'quantity', 'price', 'expected_deliver_date'] } />
+          columns={ ['plant', 'business_unit', 'material_description', 'material_group', 'quantity', 'price'] } />
       </div>
     )
   }

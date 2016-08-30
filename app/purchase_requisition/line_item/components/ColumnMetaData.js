@@ -9,7 +9,7 @@ export default [{
   locked: true,
   displayName: 'BUSINESS UNIT'
 }, {
-  columnName: 'material_name',
+  columnName: 'material_description',
   order: 3,
   locked: true,
   displayName: 'ITEM'

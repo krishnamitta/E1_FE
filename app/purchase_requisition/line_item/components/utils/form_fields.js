@@ -68,7 +68,7 @@ export default {
     multiLine: true,
     maxValueLength: 255
   },
-  expected_deliver_date: {
+  expected_delivery_date: {
     name: 'expected_delivery_date',
     floatingLabel: 'Expected Delivery Date',
     type: 'date',
