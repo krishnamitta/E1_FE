@@ -2,33 +2,21 @@ import React, { Component, PropTypes } from 'react'
 import Popover from 'material-ui/Popover'
 import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import IconButton from 'material-ui/IconButton'
-import Paper from 'material-ui/Paper'
 
 const color = 'rgb(7, 52, 116)'
 
 const section = {
   innerHeader: {
-    padding: 2,
-    margin: 1,
-    backgroundColor: '#F1F1F1',
-    height: 30,
+    padding: '10px 5px',
+    margin: 0,
     color,
-    fontSize: 15
+    fontSize: 13
   },
   innerFooter: {
-    padding: 2,
-    margin: 4,
-    height: 30,
-    fontSize: 14,
+    padding: 5,
+    fontSize: 13,
     color
   }
-}
-
-const paper = {
-  paddingTop: 20,
-  backgroundColor: 'white',
-  height: 100,
-  width: 300
 }
 
 export default class PopoverField extends Component {
@@ -53,46 +41,34 @@ export default class PopoverField extends Component {
   }
 
   render() {
-    const data = this.props ? this.props : ''
-    const address = data.address ? data.address : ''
-    const city = address.city ? address.city : ''
-    const postalCode = address.postalCode ? address.postalCode : ''
-    const state = address.state ? address.state : ''
-    const country = address.country ? address.country : ''
-    const street = address.street ? address.street : ''
-    const addressSecondLine = `${city} ${state},${postalCode},${country}`
-
-    const header = () => {
-      return <p style={ section.innerHeader }>{ data.tooltip.toUpperCase() }</p>
-    }
-
-    const footer = () => {
-      return (
-        <p style={ section.innerFooter }>
-          <div>{ street }</div>
-          <div>{ addressSecondLine }</div>
-        </p>)
-    }
-
+    const addressString = []
+    addressString.push(this.props.address.street)
+    addressString.push(this.props.address.city)
+    addressString.push(this.props.address.state)
     return (
       <div>
-        <IconButton tooltip={ data.tooltip }
+        <IconButton tooltip={ this.props.tooltip }
+          disabled={ this.props.disabled }
           onTouchTap={ (event) => this.handleTouchTap(event) }
           style={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }>
-          <LocationIcon />
+          <LocationIcon color="#8B1103" />
         </IconButton>
         <Popover
-        open={ this.state.open }
-        anchorEl={ this.state.anchorEl }
-        anchorOrigin={ { horizontal: 'left', vertical: 'bottom' } }
-        targetOrigin={ { horizontal: 'left', vertical: 'top' } }
-        onRequestClose={ (event) => this.handleRequestClose() }
-        >
-          { header() }
-          <Paper style={ paper } zDepth="0">
-            <div> GOOGLE MAP </div>
-          </Paper>
-          { footer() }
+          open={ this.state.open }
+          anchorEl={ this.state.anchorEl }
+          anchorOrigin={ { horizontal: 'left', vertical: 'bottom' } }
+          targetOrigin={ { horizontal: 'left', vertical: 'top' } }
+          onRequestClose={ (event) => this.handleRequestClose() }>
+          <header style={ section.innerHeader }>
+            <div style={ { fontSize: 13, margin: 0 } }>{ this.props.tooltip.toUpperCase() }</div>
+          </header>
+          <div>
+            <img src="/images/mapimage.png" alt="google map" width="300px" height="150px" />
+          </div>
+          <footer style={ section.innerFooter }>
+            <div>{ addressString.join(', ') }</div>
+            <div>{ `${this.props.address.postalCode}, ${this.props.address.country}` }</div>
+          </footer>
         </Popover>
       </div>
     )
@@ -100,10 +76,12 @@ export default class PopoverField extends Component {
 }
 
 PopoverField.propTypes = {
-  street: PropTypes.string,
-  country: PropTypes.string,
-  postalCode: PropTypes.string,
-  city: PropTypes.string,
   address: PropTypes.object,
-  header: PropTypes.string
+  tooltip: PropTypes.string,
+  header: PropTypes.string,
+  disabled: PropTypes.bool
+}
+
+PopoverField.defaultProps = {
+  disabled: false
 }

@@ -82,7 +82,7 @@ class LineItemComponent extends Component {
                       onChange={ (event, i, value) => this.handlePlantChange(value) } />
                   </div>
                   <div className="col-1-12">
-                    <PopoverField address={ this.props.lineItem && this.props.lineItem.shipToAddress ? this.props.lineItem.shipToAddress : '' }
+                    <PopoverField address={ this.props.lineItem && this.props.lineItem.shipToAddress ? this.props.lineItem.shipToAddress : {} }
                       tooltip="Ship to Address" />
                   </div>
                 </div>
@@ -128,7 +128,7 @@ class LineItemComponent extends Component {
                       dataSource={ this.props.references.vendors } />
                   </div>
                   <div className="col-1-12">
-                    <PopoverField address={ this.props.lineItem && this.props.lineItem.vendorAddress ? this.props.lineItem.vendorAddress : '' }
+                    <PopoverField address={ this.props.lineItem && this.props.lineItem.vendorAddress ? this.props.lineItem.vendorAddress : {} }
                       tooltip="Vendor Address" />
                   </div>
                 </div>
