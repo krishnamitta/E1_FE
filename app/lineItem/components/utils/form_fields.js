@@ -1,11 +1,4 @@
 export default {
-  business_unit: {
-    name: 'business_unit',
-    floatingLabel: 'Business Unit',
-    type: 'dropdown',
-    dataSource: [{ code: 'p2p', description: 'G1 P2P' }],
-    required: true
-  },
   plant: {
     name: 'plant',
     floatingLabel: 'Plant',
@@ -69,45 +62,13 @@ export default {
     maxValueLength: 255
   },
   expected_delivery_date: {
-    name: 'expected_delivery_date',
+    name: 'deliveryDate',
     floatingLabel: 'Expected Delivery Date',
     type: 'date',
     required: true
   },
-  ship_to_address: {
-    street: {
-      name: 'shipToAddress_street',
-      floatingLabel: 'Street',
-      type: 'string',
-      disabled: true
-    },
-    city: {
-      name: 'shipToAddress_city',
-      floatingLabel: 'City',
-      type: 'string',
-      disabled: true
-    },
-    zip: {
-      name: 'shipToAddress_postalCode',
-      floatingLabel: 'Postal Code',
-      type: 'string',
-      disabled: true
-    },
-    country: {
-      name: 'shipToAddress_country',
-      floatingLabel: 'Country',
-      type: 'string',
-      disabled: true
-    },
-    state: {
-      name: 'shipToAddress_region',
-      floatingLabel: 'State',
-      type: 'string',
-      disabled: true
-    }
-  },
   vendor_name: {
-    name: 'vendor_name',
+    name: 'desVendor',
     floatingLabel: 'Vendor Name',
     type: 'dropdown',
     dataSource: [{ code: '1', description: 'Vendor 1' }, { code: '2', description: 'Vendor 2' }],
@@ -119,9 +80,6 @@ export default {
     type: 'string',
     maxValueLength: 35
   },
-  material_exists: {
-    name: 'material_exists'
-  },
   material_not_found: {
     name: 'material_not_found',
     label: 'Item not found?',
@@ -129,7 +87,7 @@ export default {
     labelPosition: 'right',
   },
   material_name: {
-    name: 'material_name',
+    name: 'material',
     floatingLabel: 'Item/Service',
     type: 'dropdown',
     label: 'materialdesc',
@@ -137,39 +95,41 @@ export default {
     customDisplay: true
   },
   material_description: {
-    name: 'material_description',
+    name: 'shortText',
     floatingLabel: 'Item Description',
     type: 'string'
   },
   material_group: {
-    name: 'material_group',
+    name: 'matGroup',
     floatingLabel: 'Material Group',
     type: 'dropdown'
   },
   material_uom: {
-    name: 'material_uom',
+    name: 'unit',
     floatingLabel: 'UOM',
     type: 'string',
     disabled: true
   },
   accounting: {
     distribution: {
-      name: 'account_distribution',
+      name: 'reqToAccount.distPercentage',
       floatingLabel: 'Account Distribution',
       type: 'dropdown',
       dataSource: [{ code: 'percentage', description: 'Percentage' }, { code: 'quantity', description: 'Quantity' }]
     },
+    business_unit: {
+      name: 'reqToAccount.costCenter',
+      floatingLabel: 'Business Unit',
+      type: 'dropdown',
+      dataSource: [{ code: 'p2p', description: 'G1 P2P' }],
+      required: true
+    },
     assignment_category: {
-      name: 'assignment_category',
+      name: 'acctAssCat',
       floatingLabel: 'Account Assignment Category',
       type: 'dropdown',
       dataSource: [{ code: 'with_goods_receipt', description: 'With Goods Receipt' },
       { code: 'without_goods_receipt', description: 'Without Goods Receipt' }]
-    },
-    ledger_account: {
-      name: 'ledger_account',
-      floatingLabel: 'General Ledger Account',
-      type: 'string'
     }
   }
 }

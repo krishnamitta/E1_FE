@@ -4,7 +4,7 @@ import Dialog from 'material-ui/Dialog'
 import styles from '../../styles'
 import { addLineItemAction } from '../actions'
 import { connect } from 'react-redux'
-import NewLineItem from '../line_item/components/new_line_item'
+import NewLineItem from '../../lineItem/components/new_line_item'
 import ExitAppIcon from 'material-ui/svg-icons/action/exit-to-app'
 import { reset, formValueSelector } from 'redux-form'
 

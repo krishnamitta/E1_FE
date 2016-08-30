@@ -1,6 +1,6 @@
-import { PR } from '../../../../config/constants'
+import { PR } from '../../../config/constants'
 import config from 'config' // eslint-disable-line
-import { buildURI, dispatchAction } from '../../../utils/dispatch_request'
+import { buildURI, dispatchAction } from '../../utils/dispatch_request'
 
 export const fetchShipToAddress = (plant) => {
   return (dispatch) => {

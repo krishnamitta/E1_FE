@@ -1,6 +1,9 @@
 module.exports = {
   services: {
     endpoint: 'http://rnd1ec301.corp.copart.com:8000/sap/opu/odata/sap/ZP2P_MASTERDATA_SRV',
+    purchaseRequisition: {
+      create: '/HeaderSet'
+    },
     references: {
       vendorList: "/VendorMaster?acctgroup='ZPUL'&sap-client=300&$format=json",
       countries: "/CountryMaster?locale='E'&sap-client=300&$format=json",

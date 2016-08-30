@@ -1,19 +1,23 @@
 import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import InputField from '../../../common/input_field'
+import InputField from '../../common/input_field'
 import newLineItem from './utils/form_fields'
 import IconButton from 'material-ui/IconButton'
 import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress, calculateTotalPriceForLineItem } from '../actions'
-import { fetchMaterialList, loadReferenceData } from '../../../reference_data/actions'
+import { fetchMaterialList, loadReferenceData } from '../../reference_data/actions'
 import Paper from 'material-ui/Paper'
-import validate from './utils/line_item_validations'
+import CustomValidate from './utils/line_item_validations'
 import LineItemSiderbar from '../containers/lineItemSidebarContainer'
-import styles from '../../../styles'
+import styles from './styles'
 
 const section = {
   wrapper: { paddingRight: 0, paddingTop: 5 },
   innerHeader: { paddingTop: 10, margin: 0 }
+}
+
+const validate = (values) => {
+  return CustomValidate(newLineItem, values)
 }
 
 class LineItemComponent extends Component {
@@ -135,7 +139,7 @@ class LineItemComponent extends Component {
               </div>
               <section className="col-1-1" style={ section.wrapper }>
                 <div className="col-1-3">
-                  <Field { ...newLineItem.business_unit } component={ InputField } dataSource={ this.props.references.business_units } />
+                  <Field { ...newLineItem.accounting.business_unit } component={ InputField } dataSource={ this.props.references.business_units } />
                 </div>
                 <div className="col-1-3">
                   <Field { ...newLineItem.accounting.distribution } component={ InputField } />
