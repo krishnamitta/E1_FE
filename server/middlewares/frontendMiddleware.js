@@ -45,6 +45,7 @@ const addDevMiddlewares = (app, webpackConfig) => {
 // Production middlewares
 const addProdMiddlewares = (app, options) => {
   const publicPath = options.publicPath || '/';
+  const indexFile = path.resolve(process.cwd(), 'public', 'index.html');
   const outputPath = options.outputPath || path.resolve(process.cwd(), 'public', 'js');
 
   // compression middleware compresses your server responses which makes them
@@ -52,7 +53,7 @@ const addProdMiddlewares = (app, options) => {
   // and other good practices on official Express.js docs http://mxs.is/googmy
   app.use(compression());
   app.use(publicPath, express.static(outputPath));
-  app.get('*', (req, res) => res.sendFile(path.resolve(outputPath, 'index.html')));
+  app.get('*', (req, res) => res.sendFile(indexFile));
 };
 
 /**
