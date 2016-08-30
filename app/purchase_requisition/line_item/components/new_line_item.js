@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import InputField from '../../../common/input_field'
 import newLineItem from './utils/form_fields'
+import IconButton from 'material-ui/IconButton'
+import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress, calculateTotalPriceForLineItem } from '../actions'
 import { fetchMaterialList, loadReferenceData } from '../../../reference_data/actions'
 import Paper from 'material-ui/Paper'
@@ -75,9 +77,14 @@ class LineItemComponent extends Component {
             <Paper className="line_item_form">
               <div className="col-1-1">
                 <div className="col-1-2">
-                  <Field { ...newLineItem.plant } component={ InputField }
-                    dataSource={ this.props.references.plants }
-                    onChange={ (event, i, value) => this.handlePlantChange(value) } />
+                  <div className="col-11-12">
+                    <Field { ...newLineItem.plant } component={ InputField }
+                      dataSource={ this.props.references.plants }
+                      onChange={ (event, i, value) => this.handlePlantChange(value) } />
+                  </div>
+                  <div className="col-1-12">
+                    <IconButton iconStyle={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }><LocationIcon /></IconButton>
+                  </div>
                 </div>
                 <div className="col-1-2">
                   <Field { ...newLineItem.expected_delivery_date } component={ InputField } />
