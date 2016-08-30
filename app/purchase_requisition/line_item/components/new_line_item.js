@@ -122,9 +122,14 @@ class LineItemComponent extends Component {
               </div>
               <div className="col-1-1" style={ section.wrapper }>
                 <div className="col-1-3">
-                  <Field { ...newLineItem.vendor_name } component={ InputField }
-                    onChange={ (event, i, value) => this.handleVendorChange(value) }
-                    dataSource={ this.props.references.vendors } />
+                  <div className="col-11-12">
+                    <Field { ...newLineItem.vendor_name } component={ InputField }
+                      onChange={ (event, i, value) => this.handleVendorChange(value) }
+                      dataSource={ this.props.references.vendors } />
+                  </div>
+                  <div className="col-1-12">
+                    <IconButton iconStyle={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }><LocationIcon /></IconButton>
+                  </div>
                 </div>
                 <div className="col-1-3">
                   <Field { ...newLineItem.vendor_material_number } component={ InputField } />
