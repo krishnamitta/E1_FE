@@ -2,13 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import InputField from '../../../common/input_field'
 import newLineItem from './utils/form_fields'
-import IconButton from 'material-ui/IconButton'
-import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress, calculateTotalPriceForLineItem } from '../actions'
 import { fetchMaterialList, loadReferenceData } from '../../../reference_data/actions'
 import Paper from 'material-ui/Paper'
 import validate from './utils/line_item_validations'
 import LineItemSiderbar from '../containers/lineItemSidebarContainer'
+import PopoverField from '../../../common/popover_field'
 import styles from '../../../styles'
 
 const section = {
@@ -83,7 +82,8 @@ class LineItemComponent extends Component {
                       onChange={ (event, i, value) => this.handlePlantChange(value) } />
                   </div>
                   <div className="col-1-12">
-                    <IconButton iconStyle={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }><LocationIcon /></IconButton>
+                    <PopoverField address={ this.props.lineItem && this.props.lineItem.shipToAddress ? this.props.lineItem.shipToAddress : '' }
+                      tooltip="Ship to Address" />
                   </div>
                 </div>
                 <div className="col-1-2">
@@ -128,7 +128,8 @@ class LineItemComponent extends Component {
                       dataSource={ this.props.references.vendors } />
                   </div>
                   <div className="col-1-12">
-                    <IconButton iconStyle={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }><LocationIcon /></IconButton>
+                    <PopoverField address={ this.props.lineItem && this.props.lineItem.vendorAddress ? this.props.lineItem.vendorAddress : '' }
+                      tooltip="Vendor Address" />
                   </div>
                 </div>
                 <div className="col-1-3">
