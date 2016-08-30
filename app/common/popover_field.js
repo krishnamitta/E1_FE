@@ -7,8 +7,9 @@ import Paper from 'material-ui/Paper'
 const color = 'rgb(7, 52, 116)'
 
 const section = {
-  innerHeader: { padding: 2,
-    margin: 4,
+  innerHeader: {
+    padding: 2,
+    margin: 1,
     backgroundColor: '#F1F1F1',
     height: 30,
     color,
