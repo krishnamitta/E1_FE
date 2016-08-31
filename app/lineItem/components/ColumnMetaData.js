@@ -4,34 +4,24 @@ export default [{
   locked: true,
   displayName: 'PLANT'
 }, {
-  columnName: 'business_unit',
+  columnName: 'shortText',
   order: 2,
   locked: true,
-  displayName: 'BUSINESS UNIT'
+  displayName: 'MATERIAL'
 }, {
-  columnName: 'material_description',
+  columnName: 'matGroup',
   order: 3,
-  locked: true,
-  displayName: 'ITEM'
-}, {
-  columnName: 'material_group',
-  order: 4,
   locked: true,
   displayName: 'MATERIAL GROUP'
 }, {
   columnName: 'quantity',
-  order: 5,
+  order: 4,
   locked: true,
   sortable: false,
   displayName: 'QUANTITY'
 }, {
   columnName: 'price',
-  order: 6,
+  order: 5,
   locked: true,
   displayName: 'PRICE'
-}, {
-  columnName: 'expected_delivery_date',
-  order: 7,
-  locked: true,
-  displayName: 'DELIVERY DATE'
 }]

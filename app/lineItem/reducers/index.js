@@ -1,4 +1,4 @@
-import { PR } from '../../../../config/constants'
+import { PR } from '../../../config/constants'
 
 const buildAddress = (values, object, key) => {
   const addressAttrs = {
@@ -21,9 +21,9 @@ const buildAddress = (values, object, key) => {
 const copyFormValues = (values, materialData) => {
   const material = {
     price: materialData.unitprice,
-    material_description: materialData.materialdesc,
-    material_uom: materialData.uom,
-    material_name: materialData.material
+    shortText: materialData.materialdesc,
+    unit: materialData.uom,
+    material: materialData.material
   }
   return Object.assign({}, values, material)
 }

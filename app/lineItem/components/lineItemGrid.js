@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Griddle from 'griddle-react'
-import styles from '../../../styles'
-import LineItemBtn from '../../components/add_line_item'
+import styles from './styles'
+import LineItemBtn from '../../purchase_requisition/components/add_line_item'
 import ColumnMetaData from './ColumnMetaData'
 
 const NoDataComponent = () => (
@@ -16,7 +16,6 @@ const NoDataComponent = () => (
 )
 
 export default class LineItemList extends Component {
-
   render() {
     return (
       <div className="col-1-1" style={ { marginTop: 10 } }>
@@ -30,7 +29,7 @@ export default class LineItemList extends Component {
           customNoDataComponent={ NoDataComponent }
           sortAscendingComponent={ <span className="fa fa-sort-alpha-asc"></span> }
           sortDescendingComponent={ <span className="fa fa-sort-alpha-desc"></span> }
-          columns={ ['plant', 'business_unit', 'material_description', 'material_group', 'quantity', 'price'] } />
+          columns={ ['plant', 'shortText', 'matGroup', 'quantity', 'price'] } />
       </div>
     )
   }

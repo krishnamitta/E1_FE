@@ -1,13 +1,13 @@
 export default {
   title: {
     name: 'title',
-    floatingLabel: 'Title/Description',
+    floatingLabel: 'Title',
     type: 'string',
     required: true
   },
   notes: {
-    name: 'notes',
-    floatingLabel: 'Header Note',
+    name: 'headerText',
+    floatingLabel: 'Description',
     type: 'string',
     required: true
   }
