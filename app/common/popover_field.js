@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import Popover from 'material-ui/Popover'
-import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import IconButton from 'material-ui/IconButton'
 
 const color = 'rgb(7, 52, 116)'
@@ -50,8 +49,8 @@ export default class PopoverField extends Component {
         <IconButton tooltip={ this.props.tooltip }
           disabled={ this.props.disabled }
           onTouchTap={ (event) => this.handleTouchTap(event) }
-          style={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }>
-          <LocationIcon color="#8B1103" />
+          style={ { position: 'relative', top: 30, left: '-20px', paddingLeft: 0 } }>
+          <img src="/images/location.svg" alt="location" width="24px" />
         </IconButton>
         <Popover
           open={ this.state.open }
