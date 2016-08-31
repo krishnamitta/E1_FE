@@ -18,7 +18,7 @@ const section = {
   }
 }
 
-export default class PopoverField extends Component {
+export default class AddressComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -35,15 +35,15 @@ export default class PopoverField extends Component {
     this.setState({ open: false })
   }
 
-  isAddressPresent(address) {
-    address ? this.setState({ disabled: false }) : this.setState({ disabled: true })
-  }
 
   render() {
-    const addressString = []
-    addressString.push(this.props.address.street)
-    addressString.push(this.props.address.city)
-    addressString.push(this.props.address.state)
+    const addressString1 = []
+    addressString1.push(this.props.address.street)
+    addressString1.push(this.props.address.city)
+    addressString1.push(this.props.address.state)
+    const addressString2 = []
+    addressString2.push(this.props.address.postalCode)
+    addressString2.push(this.props.address.country)
     return (
       <div>
         <IconButton tooltip={ this.props.tooltip }
@@ -65,8 +65,8 @@ export default class PopoverField extends Component {
             <img src="/images/mapimage.png" alt="google map" width="300px" height="150px" />
           </div>
           <footer style={ section.innerFooter }>
-            <div>{ addressString.join(', ') }</div>
-            <div>{ `${this.props.address.postalCode}, ${this.props.address.country}` }</div>
+            <div>{ addressString1.join(', ') }</div>
+            <div>{ addressString2.join(', ') }</div>
           </footer>
         </Popover>
       </div>
@@ -74,13 +74,13 @@ export default class PopoverField extends Component {
   }
 }
 
-PopoverField.propTypes = {
+AddressComponent.propTypes = {
   address: PropTypes.object,
   tooltip: PropTypes.string,
   header: PropTypes.string,
   disabled: PropTypes.bool
 }
 
-PopoverField.defaultProps = {
+AddressComponent.defaultProps = {
   disabled: false
 }

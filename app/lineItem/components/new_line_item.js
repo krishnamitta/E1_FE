@@ -8,7 +8,7 @@ import Paper from 'material-ui/Paper'
 import CustomValidate from '../../utils/formValidations'
 import LineItemSiderbar from '../containers/lineItemSidebarContainer'
 import styles from './styles'
-import PopoverField from '../../common/popover_field'
+import AddressComponent from './address_component'
 
 const section = {
   wrapper: { paddingRight: 0, paddingTop: 5 },
@@ -86,7 +86,7 @@ class LineItemComponent extends Component {
                       onChange={ (event, i, value) => this.handlePlantChange(value) } />
                   </div>
                   <div className="col-1-12">
-                    <PopoverField address={ this.props.lineItem && this.props.lineItem.shipToAddress ? this.props.lineItem.shipToAddress : {} }
+                    <AddressComponent disabled={ !this.props.isPlantPresent } address={ this.props.lineItem && this.props.lineItem.shipToAddress ? this.props.lineItem.shipToAddress : {} }
                       tooltip="Ship to Address" />
                   </div>
                 </div>
@@ -132,7 +132,7 @@ class LineItemComponent extends Component {
                       dataSource={ this.props.references.vendors } />
                   </div>
                   <div className="col-1-12">
-                    <PopoverField address={ this.props.lineItem && this.props.lineItem.vendorAddress ? this.props.lineItem.vendorAddress : {} }
+                    <AddressComponent disabled={ !this.props.isVendorPresent } address={ this.props.lineItem && this.props.lineItem.vendorAddress ? this.props.lineItem.vendorAddress : {} }
                       tooltip="Vendor Address" />
                   </div>
                 </div>
@@ -181,7 +181,9 @@ LineItemComponent.propTypes = {
   handleSubmit: PropTypes.func,
   name: PropTypes.string,
   floatingLabel: PropTypes.string,
-  isItemPresent: PropTypes.bool
+  isItemPresent: PropTypes.bool,
+  isPlantPresent: PropTypes.string,
+  isVendorPresent: PropTypes.string
 }
 
 export default reduxForm({

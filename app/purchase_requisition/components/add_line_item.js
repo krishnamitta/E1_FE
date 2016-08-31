@@ -83,9 +83,13 @@ LineItemBtn.propTypes = {
 }
 const selector = formValueSelector(LineItemForm)
 const mapStateToProps = (state) => {
-  const isItemPresent = selector(state, 'material_not_found')
+  const { isItemPresent } = selector(state, 'material_not_found', 'plant', 'desVendor')
+  const isPlantPresent = selector(state, 'plant')
+  const isVendorPresent = selector(state, 'desVendor')
   return {
     isItemPresent,
+    isPlantPresent,
+    isVendorPresent,
     references: state.Referencedata,
     lineItem: (state.form.LineItem ? state.form.LineItem.values : {})
   }
