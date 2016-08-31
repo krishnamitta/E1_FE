@@ -1,12 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import InputField from '../../common/input_field'
-import newPR from '../../common/form_fields/new_pr'
+import newPR from './formFields'
 import { Field, reduxForm } from 'redux-form'
 import RaisedButton from 'material-ui/RaisedButton'
 import styles from '../../styles'
 import LineItemBtn from './add_line_item'
 import LineItemGrid from '../../lineItem/components/lineItemGrid'
 import AttachmentComponent from '../../attachments/attachments_component'
+import CustomValidate from '../../utils/formValidations'
+
+const validate = (values) => {
+  return CustomValidate(newPR, values)
+}
 
 class NewPRComponent extends Component {
   itemCount() {
@@ -21,9 +26,14 @@ class NewPRComponent extends Component {
 
   render() {
     const { handleSubmit } = this.props
+    const submit = (values) => {
+      console.log('valies..', values)
+      console.log('line itesmm..', this.props.data.line_items)
+    }
+
     return (
       <div className="col-1-1">
-        <form onSubmit={ handleSubmit }>
+        <form onSubmit={ handleSubmit(submit) }>
           <div className="col-1-1">
             <h2 className="col-10-12" style={ styles.formHeader }>New Purchase Requisition</h2>
             <div className="col-2-12" style={ { textAlign: 'right' } }>{ this.renderAddLineItemBtn() }</div>
@@ -53,5 +63,6 @@ NewPRComponent.propTypes = {
 }
 
 export default reduxForm({
-  form: 'PurchaseRequisition'
+  form: 'PurchaseRequisition',
+  validate
 })(NewPRComponent)

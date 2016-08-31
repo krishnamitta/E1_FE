@@ -7,7 +7,7 @@ import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress, calculateTotalPriceForLineItem } from '../actions'
 import { fetchMaterialList, loadReferenceData } from '../../reference_data/actions'
 import Paper from 'material-ui/Paper'
-import CustomValidate from './utils/line_item_validations'
+import CustomValidate from '../../utils/formValidations'
 import LineItemSiderbar from '../containers/lineItemSidebarContainer'
 import styles from './styles'
 
