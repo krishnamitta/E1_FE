@@ -2,14 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import InputField from '../../common/input_field'
 import newLineItem from './utils/form_fields'
-import IconButton from 'material-ui/IconButton'
-import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import { fetchShipToAddress, loadMaterialDetails, loadVendorAddress, calculateTotalPriceForLineItem } from '../actions'
 import { fetchMaterialList, loadReferenceData } from '../../reference_data/actions'
 import Paper from 'material-ui/Paper'
 import CustomValidate from '../../utils/formValidations'
 import LineItemSiderbar from '../containers/lineItemSidebarContainer'
 import styles from './styles'
+import PopoverField from '../../common/popover_field'
 
 const section = {
   wrapper: { paddingRight: 0, paddingTop: 5 },
@@ -87,7 +86,8 @@ class LineItemComponent extends Component {
                       onChange={ (event, i, value) => this.handlePlantChange(value) } />
                   </div>
                   <div className="col-1-12">
-                    <IconButton iconStyle={ { position: 'relative', top: 22, left: '-10px', paddingLeft: 0 } }><LocationIcon /></IconButton>
+                    <PopoverField address={ this.props.lineItem && this.props.lineItem.shipToAddress ? this.props.lineItem.shipToAddress : {} }
+                      tooltip="Ship to Address" />
                   </div>
                 </div>
                 <div className="col-1-2">
@@ -126,9 +126,15 @@ class LineItemComponent extends Component {
               </div>
               <div className="col-1-1" style={ section.wrapper }>
                 <div className="col-1-3">
-                  <Field { ...newLineItem.vendor_name } component={ InputField }
-                    onChange={ (event, i, value) => this.handleVendorChange(value) }
-                    dataSource={ this.props.references.vendors } />
+                  <div className="col-11-12">
+                    <Field { ...newLineItem.vendor_name } component={ InputField }
+                      onChange={ (event, i, value) => this.handleVendorChange(value) }
+                      dataSource={ this.props.references.vendors } />
+                  </div>
+                  <div className="col-1-12">
+                    <PopoverField address={ this.props.lineItem && this.props.lineItem.vendorAddress ? this.props.lineItem.vendorAddress : {} }
+                      tooltip="Vendor Address" />
+                  </div>
                 </div>
                 <div className="col-1-3">
                   <Field { ...newLineItem.vendor_material_number } component={ InputField } />
