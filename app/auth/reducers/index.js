@@ -1,11 +1,21 @@
 import { AUTH } from '../../../config/constants'
 
+const extractAuthData = (data) => {
+  return {
+    isAuthenticated: true,
+    username: data.entity_name,
+    entityId: data.entity_id,
+    entityType: data.entity_type,
+    accessToken: data.access_token
+  }
+}
+
 const Auth = (state = {}, action) => {
   const currentState = (localStorage.getItem('profile') && JSON.parse(localStorage.getItem('profile'))) || state
   let newState
   switch (action.type) {
     case AUTH.LOGIN_SUCCESS:
-      newState = Object.assign({}, currentState, { isAuthenticated: true, username: action.data.entity_name })
+      newState = Object.assign({}, currentState, extractAuthData(action.data))
       break
     case AUTH.LOGIN_FAILURE:
       newState = Object.assign({}, currentState, { isAuthenticated: false })

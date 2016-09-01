@@ -12,18 +12,18 @@ export const logout = () => {
 
 export const loginRequest = (credentials) => {
   return ((dispatch) => {
-        axios.post('/login', credentials, {
-          withCredentials: true
-        }).then((response) => {
-          if (response.status == 200) {
-            dispatch({ type: AUTH.LOGIN_SUCCESS, data: response.data })
-          } else {
-            dispatch({ type: AUTH.LOGIN_FAILURE, data: response })
-          }
-        }).catch((error) => {
-          console.log('login error..', error)
-          dispatch({ type: AUTH.LOGIN_FAILURE, data: error })
-        })
-    }
-  )
+    axios.post('/login', credentials, {
+      withCredentials: true
+    }).then((response) => {
+      if (response.status == 200) {
+        dispatch({ type: AUTH.LOGIN_SUCCESS, data: response.data })
+        browserHistory.push('/dashboard')
+      } else {
+        dispatch({ type: AUTH.LOGIN_FAILURE, data: response })
+      }
+    }).catch((error) => {
+      console.log('login error..', error)
+      dispatch({ type: AUTH.LOGIN_FAILURE, data: error })
+    })
+  })
 }

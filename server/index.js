@@ -1,5 +1,5 @@
 import express from 'express'
-//import session from 'express-session'
+import session from 'express-session'
 import logger from './logger'
 import setup from './middlewares/frontendMiddleware'
 import login from './auth/login'
@@ -9,7 +9,7 @@ import { resolve } from 'path'
 const argv = require('minimist')(process.argv.slice(2));
 const envConfig = { path: resolve(process.cwd(), 'config/environments/server', `${process.env.NODE_ENV}.js`) }
 require('dotenv').config(envConfig);
-//const FileStore = require('session-file-store')(session)
+const FileStore = require('session-file-store')(session)
 
 // initialize node express framework
 const app = express()
@@ -24,13 +24,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // session middleware for express
-// app.use(session({
-//   name: 'SessionID',
-//   secret: process.env.AUTH_SECRET,
-//   saveUninitialized: true,
-//   resave: true,
-//   store: new FileStore
-// }))
+app.use(session({
+  name: 'SessionID',
+  secret: process.env.AUTH_SECRET,
+  saveUninitialized: true,
+  resave: true,
+  store: new FileStore
+}))
 
 setup(app, {
   outputPath: resolve(process.cwd(), 'public', 'js'),

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 
-export const requireAuthentication = (InputComponent) => {
+const requireAuthentication = (InputComponent) => {
   class AuthenticatedComponent extends Component {
 
     componentWillMount() {
@@ -41,3 +41,4 @@ export const requireAuthentication = (InputComponent) => {
   }
   return connect(mapStateToProps)(AuthenticatedComponent)
 }
+export default requireAuthentication

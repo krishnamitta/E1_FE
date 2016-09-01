@@ -16,8 +16,8 @@ export default class HeaderComponent extends Component {
     return (
       <header>
         <AppBar style={ styles.appbar } showMenuIconButton={ false } titleStyle={ { flex: 'none' } }>
-          <div className="col-2-12">
-            <Link title="Copart" to="/">
+          <div className="col-10-12">
+            <Link title="Copart" to={ user && user.isAuthenticated ? '/dashboard' : '/' }>
               <img src="/images/logo.png" alt="Copart" style={ styles.logo } />
             </Link>
           </div>
